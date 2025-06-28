@@ -1,0 +1,8 @@
+Django
+Padding
+pycrypto
+requests
+tldextract
+ua-parser
+user-agents
+wheel

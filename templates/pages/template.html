@@ -1,0 +1,73 @@
+{% load static %}<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>{{title}}</title>
+		<link rel="icon" href="{% static 'favicon.ico' %}">
+		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+		<style>.crawlbin_directive,.crawlbin_url,.navbar,a{background-color:#eee}html{position:relative;min-height:100%}body{margin-bottom:60px}footer{position:absolute;bottom:0;width:100%;height:45px;padding-top:15px;background-color:#f5f5f5}.main{margin-top:50px}.crawlbin_url,.second_url,h4{margin-top:20px}.crawlbin_directive{color:#337ab7;font-size:1.1em}.crawlbin_url{font-size:1.2em;padding:10px;width:100%;display:block;margin-bottom:20px}.second_url{display:block;padding-left:20px}.crawlbin_url a{font-family:Courier}a:hover{text-decoration:none}.note{display:block;color:#666;font-size:.8em}ol{font-size:1.3em}ol a{padding:5px;width:50%;display:inline-block}ol li{margin:5px}h2.url{word-wrap:break-word;color:#aaa;font-size:1.8em}</style>
+{% if meta_follow_index_string %}
+		<meta name="robots" content="{{ meta_follow_index_string }}">
+{% endif %}
+{% if canonical_next_block %}
+		<link rel="canonical" href="{{canonical_next_block}}" />
+{% endif %}
+{% if canonical_random %}
+		<link rel="canonical" href="{{canonical_random}}" />
+{% endif %}
+{% if canonical_self %}
+		<link rel="canonical" href="{{canonical_self}}" />
+{% endif %}
+{% if canonical_home %}
+		<link rel="canonical" href="{{canonical_home}}" />
+{% endif %}
+	</head>
+	<body>
+
+		<nav class="navbar navbar-fixed-top">
+			<div class="container">
+				<div class="navbar-header">
+					<a class="navbar-brand" href="/">crawlbin</a>
+				</div>
+			</div>
+		</nav>
+
+	<div class="container main clearfix">
+		<div class="row">
+			<div class="col-md-12">
+
+				{% if h1 != "off" %}
+				<h1>crawlbin: </h1>
+					{% if h1 == "multiple" %}
+						<h1>Another title</h1>
+					{% endif %}
+				{% endif %}
+
+				<h2 class='url'>/{{url}}/</h2>
+
+				<h3>Flags affecting this page: </h3>
+
+				{% for directive in directives %}
+				<span class="crawlbin_url">
+					<a href="/#{{directive}}">{{directive}}</a>
+				</span>
+				{% endfor %}
+
+				<h3>Headers sent with this response: </h3>
+
+				{% for key, value in headers.items %}
+				<span class="crawlbin_url">
+					<a href="/#{{key}}">{{key}}</a>: {{value}}
+				</span>
+				{% empty %}
+				<p>No headers sent</p>
+				{% endfor %}
+			</div>
+		</div>
+	</div>
+	<footer>
+		<p class="text-center">Dev Tools are your friend :)</p>
+	</footer>
+	<script src="//code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha256-3edrmyuQ0w65f8gfBsqowzjJe2iM6n0nKciPUp8y+7E=" crossorigin="anonymous"></script>
+	</body>
+</html>
