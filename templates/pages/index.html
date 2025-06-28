@@ -2,7 +2,7 @@
 <html lang="en">
 	<head>
 		<meta charset="utf-8">
-		<title>𝘾𝙧𝙖𝙬𝙡𝙗.in - Testing all the things</title>
+		<title>smul8 - Simulate all the things</title>
 		<link rel="icon" href="{% static 'favicon.ico' %}">
 		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 		<style>.crawlbin_directive,.crawlbin_url,.navbar,a{background-color:#eee}html{position:relative;min-height:100%}body{margin-bottom:60px}footer{position:absolute;bottom:0;width:100%;height:45px;padding-top:15px;background-color:#f5f5f5}footer p{text-align:center}.main{margin-top:50px}.crawlbin_url,.second_url,h4{margin-top:20px}.crawlbin_directive{color:#337ab7;font-size:1.1em}.crawlbin_url{font-size:1.2em;padding:10px;width:100%;display:block;margin-bottom:20px}.second_url{display:block;padding-left:20px}.crawlbin_url a{font-family:Courier}a:hover{text-decoration:none}.note{display:block;color:#666;font-size:.8em}ol{font-size:1.3em}ol a{padding:5px;width:50%;display:inline-block}ol li{margin:5px}h2.url{word-wrap:break-word;color:#aaa;font-size:1.8em}</style>
@@ -11,7 +11,7 @@
 		<div class="jumbotron">
 			<div class="container">
 				<h1><em>crawl</em>bin</h1>
-				<p><a href="/">crawlbin</a> is designed for testing web crawlers against various search engine directives and HTTP responses.</p>
+				<p><a href="/">crawlbin</a> is designed for testing web crawlers against various search engine directives and HTTP responses, plus HTTP testing scenarios for APIs and clients.</p>
 				<p>Inspired by <a href="https://httpbin.org/">httpbin</a>, forked from the original <a href="https://github.com/DistilledLtd/crawlbin">Crawlbin</a> repository.</p>
 			</div>
 		</div>
@@ -19,8 +19,12 @@
 			<div class="row">
 				<div class="col-md-12">
 					<h2>Introduction</h2>
-					<p>crawlbin accepts a list of flags in a URL which toggle various search engine directives and HTTP responses within the complete HTML page it returns. You can simulate a variety of issues which crawlers might encounter.</p>
-					<p>For example:</p>
+					<p>crawlbin provides two main categories of testing functionality:</p>
+					<ul>
+						<li><strong>Crawler Testing:</strong> Accepts flags in URLs which toggle various search engine directives and HTTP responses within complete HTML pages. Perfect for testing web crawlers against various scenarios they might encounter.</li>
+						<li><strong>HTTP Testing:</strong> Provides endpoints for testing HTTP clients, APIs, and request/response patterns similar to httpbin.org.</li>
+					</ul>
+					<p>For crawler testing, you can simulate a variety of issues which crawlers might encounter:</p>
 					<span class="crawlbin_url"><a href="/response_404/">/response_404/</a><span class="note">HTTP Status: 404 (Not Found)</span></span>
 					<span class="crawlbin_url"><a href="/meta_noindex/">/meta_noindex/</a><span class="note">&lt;meta name="robots" content="noindex" /&gt;</span></span>
 					<p>You can join flags together with <span class="crawlbin_directive">+</span>:
@@ -47,19 +51,41 @@
 					<hr />
 					<h2>Table of Contents</h2>
 					<ol>
-						<li><a href="#flag_list">Full List of Flags</a></li>
+						<li><a href="#flag_list">Crawlbin Features</a>
+							<ul>
+								<li><a href="#response_codes">Response Codes &amp; Redirects</a></li>
+								<li><a href="#noindex_directive">no/index directive</a></li>
+								<li><a href="#nofollow_directive">no/follow directive</a></li>
+								<li><a href="#h1_tag">H1 tags</a></li>
+								<li><a href="#title_tag">Title tag</a></li>
+								<li><a href="#canonical">Canonical</a></li>
+								<li><a href="#vary_header">Vary header</a></li>
+							</ul>
+						</li>
 						<li><a href="#random">Randomised responses</a></li>
 						<li><a href="#user_agent">User-agent / device determined responses</a></li>
-						<!-- <li><a href="#delay">Delay / timeout options</a></li> -->
+						<li><a href="#http_scenarios">HTTP Scenarios</a>
+							<ul>
+								<li><a href="#http_status">HTTP Status Codes</a></li>
+								<li><a href="#http_redirects">HTTP Redirects</a></li>
+								<li><a href="#http_headers">HTTP Headers</a></li>
+								<li><a href="#http_cookies">HTTP Cookies</a></li>
+								<li><a href="#http_data">Data Formats</a></li>
+								<li><a href="#http_encoding">Encoding &amp; Utilities</a></li>
+								<li><a href="#http_requests">HTTP Request Testing</a></li>
+							</ul>
+						</li>
 						<li><a href="#faq">FAQ</a></li>
 					</ol>
 					<!-- Flag list Section -->
-					<h3><a name="flag_list"></a>Full List of Flags</h3>
+					<h3><a name="flag_list"></a>Crawlbin Features</h3>
 					<p>crawlbin can take a variety of flags with various options. Here is the complete list.</p>
 					<ol>
 						<li><a href="#response_codes">Response Codes &amp; Redirects</a></li>
 						<li><a href="#noindex_directive">no/index directive</a></li>
 						<li><a href="#nofollow_directive">no/follow directive</a></li>
+						<li><a href="#h1_tag">H1 tags</a></li>
+						<li><a href="#title_tag">Title tag</a></li>
 						<li><a href="#canonical">canonical directive</a></li>
 						<li><a href="#vary_header">vary header</a></li>
 					</ol>
@@ -304,29 +330,133 @@
 						<span class="note">HTTP Status: 404 (Not Found)</span>
 					</span>
 					<h3><a name="faq"></a>FAQ</h3>
+					<h4>What's the difference between crawlbin features and HTTP scenarios?</h4>
+					<p>Crawlbin features (flags) are designed specifically for testing web crawlers and search engine behavior. HTTP scenarios provide general HTTP testing capabilities for any HTTP client or API testing.</p>
 					<h4>Do you handle POST requests?</h4>
-					<p>Not currently.</p>
+					<p>Yes, in the HTTP scenarios section. The crawlbin flags are primarily designed for GET requests to simulate crawler behavior.</p>
 					<h4>Do you handle HTTPS requests?</h4>
-					<p>Not currently.</p>
+					<p>This depends on your deployment configuration. The application itself supports HTTPS when properly configured.</p>
+					<h4>Can I combine crawlbin flags with HTTP scenarios?</h4>
+					<p>No, these are separate systems. Crawlbin flags use a specific URL pattern, while HTTP scenarios use dedicated endpoints under /http/.</p>
 				</div>
 			</div>
-			<div class="row">
-            <div class="col-md-12">
-                <h2>HTTP Scenarios</h2>
-                <p>Explore various HTTP scenarios inspired by <a href="https://httpbin.org/">httpbin</a>:</p>
-                <ul>
-                    <li><a href="/http/status/200">Status Codes</a> - Simulate HTTP status codes.</li>
-                    <li><a href="/http/redirect/1">Redirects</a> - Test HTTP redirects.</li>
-                    <li><a href="/http/headers">Headers</a> - Inspect HTTP headers.</li>
-                    <li><a href="/http/cookies">Cookies</a> - Manage cookies.</li>
-                    <li><a href="/http/json">JSON</a> - Return JSON responses.</li>
-                    <li><a href="/http/xml">XML</a> - Return XML responses.</li>
-                    <li><a href="/http/base64">Base64 Decode</a> - Decode Base64 strings.</li>
-                    <li><a href="/http/html">HTML</a> - Render HTML content.</li>
-                    <li><a href="/http/robots.txt">Robots.txt</a> - Serve robots.txt files.</li>
-                </ul>
-            </div>
-        </div>
+			<!-- HTTP Scenarios Section -->
+			<h3><a name="http_scenarios"></a>HTTP Scenarios</h3>
+			<p>In addition to crawler-focused features, we provide HTTP testing scenarios inspired by <a href="https://httpbin.org/">httpbin</a>. These endpoints help test HTTP clients, APIs, and various request/response patterns.</p>
+			
+			<!-- HTTP Status Codes -->
+			<h4><a name="http_status"></a>HTTP Status Codes</h4>
+			<p>Test your application's handling of various HTTP status codes:</p>
+			<span class="crawlbin_url">
+				<a href="{% url 'status_code' code=200 %}">{% url 'status_code' code=200 %}</a>
+				<span class="note">HTTP Status: 200 (OK)</span>
+			</span>
+			<span class="crawlbin_url">
+				<a href="{% url 'status_code' code=404 %}">{% url 'status_code' code=404 %}</a>
+				<span class="note">HTTP Status: 404 (Not Found)</span>
+			</span>
+			<span class="crawlbin_url">
+				<a href="{% url 'status_code' code=500 %}">{% url 'status_code' code=500 %}</a>
+				<span class="note">HTTP Status: 500 (Internal Server Error)</span>
+			</span>
+			<p>You can test any valid HTTP status code by replacing the number in the URL.</p>
+
+			<!-- HTTP Redirects -->
+			<h4><a name="http_redirects"></a>HTTP Redirects</h4>
+			<p>Test redirect chains and various redirect scenarios:</p>
+			<span class="crawlbin_url">
+				<a href="{% url 'redirect' %}">{% url 'redirect' %}</a>
+				<span class="note">HTTP Status: 302 (Found) → redirects 1 time</span>
+			</span>
+			<span class="crawlbin_url">
+				<a href="{% url 'redirect_chain' count=3 %}">{% url 'redirect_chain' count=3 %}</a>
+				<span class="note">HTTP Status: 302 (Found) → redirects 3 times</span>
+			</span>
+			<span class="crawlbin_url">
+				<a href="{% url 'redirect_chain' count=10 %}">{% url 'redirect_chain' count=10 %}</a>
+				<span class="note">HTTP Status: 302 (Found) → redirects 10 times</span>
+			</span>
+			<p>Test redirect loops and how your application handles multiple redirects.</p>
+
+			<!-- HTTP Headers -->
+			<h4><a name="http_headers"></a>HTTP Headers</h4>
+			<p>Inspect and test HTTP request headers:</p>
+			<span class="crawlbin_url">
+				<a href="{% url 'headers' %}">{% url 'headers' %}</a>
+				<span class="note">Returns JSON with all request headers</span>
+			</span>
+			<span class="crawlbin_url">
+				<a href="{% url 'user_agent' %}">{% url 'user_agent' %}</a>
+				<span class="note">Returns your User-Agent string</span>
+			</span>
+			<span class="crawlbin_url">
+				<a href="{% url 'ip_address' %}">{% url 'ip_address' %}</a>
+				<span class="note">Returns your IP address</span>
+			</span>
+
+			<!-- HTTP Cookies -->
+			<h4><a name="http_cookies"></a>HTTP Cookies</h4>
+			<p>Test cookie handling and session management:</p>
+			<span class="crawlbin_url">
+				<a href="{% url 'cookies' %}">{% url 'cookies' %}</a>
+				<span class="note">Returns all cookies sent in the request</span>
+			</span>
+			<span class="crawlbin_url">
+				<a href="{% url 'cookies_set' name='test' value='value' %}">{% url 'cookies_set' name='test' value='value' %}</a>
+				<span class="note">Sets a cookie named 'test' with value 'value'</span>
+			</span>
+			<span class="crawlbin_url">
+				<a href="{% url 'cookies_delete' name='test' %}">{% url 'cookies_delete' name='test' %}</a>
+				<span class="note">Deletes the cookie named 'test'</span>
+			</span>
+
+			<!-- Data Formats -->
+			<h4><a name="http_data"></a>Data Formats</h4>
+			<p>Test various data format responses:</p>
+			<span class="crawlbin_url">
+				<a href="{% url 'json_response' %}">{% url 'json_response' %}</a>
+				<span class="note">Content-Type: application/json</span>
+				<span class="note">Returns sample JSON data</span>
+			</span>
+			<span class="crawlbin_url">
+				<a href="{% url 'xml_response' %}">{% url 'xml_response' %}</a>
+				<span class="note">Content-Type: application/xml</span>
+				<span class="note">Returns sample XML data</span>
+			</span>
+			<span class="crawlbin_url">
+				<a href="{% url 'html_response' %}">{% url 'html_response' %}</a>
+				<span class="note">Content-Type: text/html</span>
+				<span class="note">Returns sample HTML content</span>
+			</span>
+
+			<!-- Encoding & Utilities -->
+			<h4><a name="http_encoding"></a>Encoding & Utilities</h4>
+			<p>Test encoding and decoding utilities:</p>
+			<span class="crawlbin_url">
+				<a href="{% url 'base64_decode' encoded_string='SFRUUCBTY2VuYXJpb3M=' %}">{% url 'base64_decode' encoded_string='SFRUUCBTY2VuYXJpb3M=' %}</a>
+				<span class="note">Decodes the Base64 string: "HTTP Scenarios"</span>
+			</span>
+			<span class="crawlbin_url">
+				<a href="{% url 'robots_txt' %}">{% url 'robots_txt' %}</a>
+				<span class="note">Content-Type: text/plain</span>
+				<span class="note">Returns a robots.txt file</span>
+			</span>
+
+			<!-- HTTP Request Testing -->
+			<h4><a name="http_requests"></a>HTTP Request Testing</h4>
+			<p>Test different HTTP methods and request types:</p>
+			<span class="crawlbin_url">
+				<a href="{% url 'get_request' %}">{% url 'get_request' %}</a>
+				<span class="note">Accepts GET requests, returns request data</span>
+			</span>
+			<span class="crawlbin_url">
+				<a href="{% url 'post_request' %}">{% url 'post_request' %}</a>
+				<span class="note">Accepts POST requests, returns posted data</span>
+			</span>
+			<span class="crawlbin_url">
+				<a href="{% url 'anything_request' %}">{% url 'anything_request' %}</a>
+				<span class="note">Accepts any HTTP method, returns request data</span>
+			</span>
 			<hr>
 		</div>
 		<footer>
