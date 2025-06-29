@@ -27,6 +27,13 @@ def index(request):
     return render(request, 'pages/index.html')
 
 
+def scenarios(request):
+    """ Render the comprehensive scenarios page with all permutations.
+
+    """
+    return render(request, 'pages/scenarios.html')
+
+
 def robots(request):
     """ Render the crawlbin robots.txt.
 

@@ -1,0 +1,249 @@
+{% load static %}<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>All Scenarios - crawlbin</title>
+		<link rel="icon" href="{% static 'favicon.ico' %}">
+		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+		<style>.crawlbin_directive,.crawlbin_url,.navbar,a{background-color:#eee}html{position:relative;min-height:100%}body{margin-bottom:60px}footer{position:absolute;bottom:0;width:100%;height:45px;padding-top:15px;background-color:#f5f5f5}footer p{text-align:center}.main{margin-top:50px}.crawlbin_url,.second_url,h4{margin-top:20px}.crawlbin_directive{color:#337ab7;font-size:1.1em}.crawlbin_url{font-size:1.2em;padding:10px;width:100%;display:block;margin-bottom:20px}.second_url{display:block;padding-left:20px}.crawlbin_url a{font-family:Courier}a:hover{text-decoration:none}.note{display:block;color:#666;font-size:.8em}ol{font-size:1.3em}ol a{padding:5px;width:50%;display:inline-block}ol li{margin:5px}h2.url{word-wrap:break-word;color:#aaa;font-size:1.8em}.scenario-group{margin-bottom:30px}</style>
+	</head>
+	<body>
+		<div class="jumbotron">
+			<div class="container">
+				<h1>All <em>crawl</em>bin Scenarios</h1>
+				<p>Comprehensive list of all available crawlbin and HTTP testing scenarios</p>
+				<p><a href="/" class="btn btn-primary">← Back to Documentation</a></p>
+			</div>
+		</div>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<h2>Quick Navigation</h2>
+					<ul class="list-inline">
+						<li><a href="#crawlbin-single">Single Directives</a></li>
+						<li><a href="#crawlbin-combinations">Common Combinations</a></li>
+						<li><a href="#crawlbin-redirects">Redirect Scenarios</a></li>
+						<li><a href="#crawlbin-random">Random & User-Agent</a></li>
+						<li><a href="#http-status">HTTP Status Codes</a></li>
+						<li><a href="#http-scenarios">HTTP Test Scenarios</a></li>
+					</ul>
+					<hr>
+
+					<!-- Single Crawlbin Directives -->
+					<div class="scenario-group">
+						<h3><a name="crawlbin-single"></a>Single Crawlbin Directives</h3>
+						<h4>Response Codes</h4>
+						<div class="row">
+							<div class="col-md-6">
+								<span class="crawlbin_url"><a href="/response_400/">/response_400/</a><span class="note">HTTP 400 Bad Request</span></span>
+								<span class="crawlbin_url"><a href="/response_401/">/response_401/</a><span class="note">HTTP 401 Unauthorized</span></span>
+								<span class="crawlbin_url"><a href="/response_403/">/response_403/</a><span class="note">HTTP 403 Forbidden</span></span>
+								<span class="crawlbin_url"><a href="/response_404/">/response_404/</a><span class="note">HTTP 404 Not Found</span></span>
+								<span class="crawlbin_url"><a href="/response_410/">/response_410/</a><span class="note">HTTP 410 Gone</span></span>
+								<span class="crawlbin_url"><a href="/response_418/">/response_418/</a><span class="note">HTTP 418 I'm a teapot</span></span>
+							</div>
+							<div class="col-md-6">
+								<span class="crawlbin_url"><a href="/response_500/">/response_500/</a><span class="note">HTTP 500 Internal Server Error</span></span>
+								<span class="crawlbin_url"><a href="/response_503/">/response_503/</a><span class="note">HTTP 503 Service Unavailable</span></span>
+								<span class="crawlbin_url"><a href="/response_301/">/response_301/</a><span class="note">HTTP 301 Moved Permanently</span></span>
+								<span class="crawlbin_url"><a href="/response_302/">/response_302/</a><span class="note">HTTP 302 Found</span></span>
+								<span class="crawlbin_url"><a href="/response_303/">/response_303/</a><span class="note">HTTP 303 See Other</span></span>
+								<span class="crawlbin_url"><a href="/response_307/">/response_307/</a><span class="note">HTTP 307 Temporary Redirect</span></span>
+								<span class="crawlbin_url"><a href="/response_308/">/response_308/</a><span class="note">HTTP 308 Permanent Redirect</span></span>
+							</div>
+						</div>
+
+						<h4>Meta Robots Directives</h4>
+						<div class="row">
+							<div class="col-md-6">
+								<span class="crawlbin_url"><a href="/meta_index/">/meta_index/</a><span class="note">meta robots: index</span></span>
+								<span class="crawlbin_url"><a href="/meta_noindex/">/meta_noindex/</a><span class="note">meta robots: noindex</span></span>
+								<span class="crawlbin_url"><a href="/meta_follow/">/meta_follow/</a><span class="note">meta robots: follow</span></span>
+								<span class="crawlbin_url"><a href="/meta_nofollow/">/meta_nofollow/</a><span class="note">meta robots: nofollow</span></span>
+							</div>
+							<div class="col-md-6">
+								<span class="crawlbin_url"><a href="/header_index/">/header_index/</a><span class="note">X-Robots-Tag: index</span></span>
+								<span class="crawlbin_url"><a href="/header_noindex/">/header_noindex/</a><span class="note">X-Robots-Tag: noindex</span></span>
+								<span class="crawlbin_url"><a href="/header_follow/">/header_follow/</a><span class="note">X-Robots-Tag: follow</span></span>
+								<span class="crawlbin_url"><a href="/header_nofollow/">/header_nofollow/</a><span class="note">X-Robots-Tag: nofollow</span></span>
+							</div>
+						</div>
+
+						<h4>H1 Tags</h4>
+						<span class="crawlbin_url"><a href="/h1_off/">/h1_off/</a><span class="note">No H1 tag</span></span>
+						<span class="crawlbin_url"><a href="/h1_multiple/">/h1_multiple/</a><span class="note">Multiple H1 tags</span></span>
+
+						<h4>Title Tags</h4>
+						<span class="crawlbin_url"><a href="/random_title/">/random_title/</a><span class="note">Random title selection</span></span>
+
+						<h4>Canonical Tags</h4>
+						<div class="row">
+							<div class="col-md-6">
+								<span class="crawlbin_url"><a href="/canonical_self/">/canonical_self/</a><span class="note">Canonical to self</span></span>
+								<span class="crawlbin_url"><a href="/canonical_home/">/canonical_home/</a><span class="note">Canonical to home</span></span>
+								<span class="crawlbin_url"><a href="/html_canonical_self/">/html_canonical_self/</a><span class="note">HTML-only canonical to self</span></span>
+								<span class="crawlbin_url"><a href="/html_canonical_home/">/html_canonical_home/</a><span class="note">HTML-only canonical to home</span></span>
+							</div>
+							<div class="col-md-6">
+								<span class="crawlbin_url"><a href="/header_canonical_self/">/header_canonical_self/</a><span class="note">Header-only canonical to self</span></span>
+								<span class="crawlbin_url"><a href="/header_canonical_home/">/header_canonical_home/</a><span class="note">Header-only canonical to home</span></span>
+							</div>
+						</div>
+
+						<h4>Vary Headers</h4>
+						<div class="row">
+							<div class="col-md-6">
+								<span class="crawlbin_url"><a href="/vary_accept_encoding/">/vary_accept_encoding/</a><span class="note">Vary: Accept-Encoding</span></span>
+								<span class="crawlbin_url"><a href="/vary_user_agent/">/vary_user_agent/</a><span class="note">Vary: User-Agent</span></span>
+							</div>
+							<div class="col-md-6">
+								<span class="crawlbin_url"><a href="/vary_cookie/">/vary_cookie/</a><span class="note">Vary: Cookie</span></span>
+								<span class="crawlbin_url"><a href="/vary_referer/">/vary_referer/</a><span class="note">Vary: Referer</span></span>
+							</div>
+						</div>
+					</div>
+
+					<!-- Common Combinations -->
+					<div class="scenario-group">
+						<h3><a name="crawlbin-combinations"></a>Common Crawlbin Combinations</h3>
+						<h4>Meta + Response Codes</h4>
+						<span class="crawlbin_url"><a href="/meta_noindex+response_404/">/meta_noindex+response_404/</a><span class="note">noindex + 404</span></span>
+						<span class="crawlbin_url"><a href="/meta_nofollow+response_500/">/meta_nofollow+response_500/</a><span class="note">nofollow + 500</span></span>
+						<span class="crawlbin_url"><a href="/meta_noindex+meta_nofollow+response_410/">/meta_noindex+meta_nofollow+response_410/</a><span class="note">noindex + nofollow + 410</span></span>
+
+						<h4>Canonical + Other Directives</h4>
+						<span class="crawlbin_url"><a href="/canonical_self+vary_user_agent/">/canonical_self+vary_user_agent/</a><span class="note">Self-canonical + Vary User-Agent</span></span>
+						<span class="crawlbin_url"><a href="/canonical_home+meta_noindex/">/canonical_home+meta_noindex/</a><span class="note">Home canonical + noindex</span></span>
+						<span class="crawlbin_url"><a href="/h1_multiple+meta_noindex/">/h1_multiple+meta_noindex/</a><span class="note">Multiple H1 + noindex</span></span>
+
+						<h4>Mixed Headers and Meta</h4>
+						<span class="crawlbin_url"><a href="/header_noindex+meta_noindex/">/header_noindex+meta_noindex/</a><span class="note">Header + Meta noindex</span></span>
+						<span class="crawlbin_url"><a href="/header_noindex+header_index+meta_index+meta_noindex/">/header_noindex+header_index+meta_index+meta_noindex/</a><span class="note">Conflicting directives</span></span>
+						<span class="crawlbin_url"><a href="/vary_user_agent+vary_cookie/">/vary_user_agent+vary_cookie/</a><span class="note">Multiple Vary headers</span></span>
+
+						<h4>Complex Scenarios</h4>
+						<span class="crawlbin_url"><a href="/h1_off+meta_noindex+canonical_self+vary_user_agent/">/h1_off+meta_noindex+canonical_self+vary_user_agent/</a><span class="note">No H1 + noindex + self-canonical + Vary</span></span>
+						<span class="crawlbin_url"><a href="/h1_multiple+random_title+meta_nofollow+header_noindex/">/h1_multiple+random_title+meta_nofollow+header_noindex/</a><span class="note">Multiple H1 + random title + mixed robots</span></span>
+					</div>
+
+					<!-- Redirect Scenarios -->
+					<div class="scenario-group">
+						<h3><a name="crawlbin-redirects"></a>Redirect Scenarios</h3>
+						<h4>Simple Redirects</h4>
+						<span class="crawlbin_url"><a href="/canonical_self+vary_user_agent/response_301/">/canonical_self+vary_user_agent/response_301/</a><span class="note">301 redirect with canonical + vary</span></span>
+						<span class="crawlbin_url"><a href="/meta_noindex/response_302/">/meta_noindex/response_302/</a><span class="note">302 redirect from noindex page</span></span>
+						<span class="crawlbin_url"><a href="/h1_multiple+canonical_home/response_307/">/h1_multiple+canonical_home/response_307/</a><span class="note">307 redirect with multiple H1 + canonical</span></span>
+
+						<h4>Canonical Redirects</h4>
+						<span class="crawlbin_url"><a href="/h1_multiple+meta_noindex/canonical_next_block/">/h1_multiple+meta_noindex/canonical_next_block/</a><span class="note">Canonical to next block</span></span>
+						<span class="crawlbin_url"><a href="/h1_multiple+meta_noindex/html_canonical_next_block+header_canonical_self/">/h1_multiple+meta_noindex/html_canonical_next_block+header_canonical_self/</a><span class="note">Conflicting canonicals</span></span>
+					</div>
+
+					<!-- Random and User-Agent Scenarios -->
+					<div class="scenario-group">
+						<h3><a name="crawlbin-random"></a>Random & User-Agent Scenarios</h3>
+						<h4>Random Blocks</h4>
+						<span class="crawlbin_url"><a href="/[meta_noindex+vary_cookie][response_404]/">/[meta_noindex+vary_cookie][response_404]/</a><span class="note">Random: noindex+vary OR 404</span></span>
+						<span class="crawlbin_url"><a href="/[meta_noindex+[vary_cookie,vary_referer]][response_404]/">/[meta_noindex+[vary_cookie,vary_referer]][response_404]/</a><span class="note">Nested random: noindex + random vary</span></span>
+
+						<h4>User-Agent Targeting</h4>
+						<span class="crawlbin_url"><a href="/[mobile:response_500][meta_noindex]/">/[mobile:response_500][meta_noindex]/</a><span class="note">Mobile: 500, Others: noindex</span></span>
+						<span class="crawlbin_url"><a href="/[all:response_404][mobile:response_500][desktop:meta_noindex]/">/[all:response_404][mobile:response_500][desktop:meta_noindex]/</a><span class="note">All: 404, Mobile: 500, Desktop: noindex</span></span>
+						<span class="crawlbin_url"><a href="/[bot:meta_noindex][mobile:response_301][desktop:canonical_self]/">/[bot:meta_noindex][mobile:response_301][desktop:canonical_self]/</a><span class="note">Bot: noindex, Mobile: 301, Desktop: canonical</span></span>
+						<span class="crawlbin_url"><a href="/[googlebot:response_200][bot:response_404][mobile:meta_nofollow]/">/[googlebot:response_200][bot:response_404][mobile:meta_nofollow]/</a><span class="note">Googlebot: 200, Bots: 404, Mobile: nofollow</span></span>
+						<span class="crawlbin_url"><a href="/[ie:h1_off][ff:h1_multiple][tablet:vary_user_agent]/">/[ie:h1_off][ff:h1_multiple][tablet:vary_user_agent]/</a><span class="note">IE: no H1, Firefox: multiple H1, Tablet: vary</span></span>
+					</div>
+
+					<!-- HTTP Status Codes -->
+					<div class="scenario-group">
+						<h3><a name="http-status"></a>HTTP Status Codes</h3>
+						<p>Test any HTTP status code by changing the number:</p>
+						<div class="row">
+							<div class="col-md-3">
+								<h5>2xx Success</h5>
+								<span class="crawlbin_url"><a href="{% url 'status_code' code=200 %}">{% url 'status_code' code=200 %}</a><span class="note">200 OK</span></span>
+								<span class="crawlbin_url"><a href="{% url 'status_code' code=201 %}">{% url 'status_code' code=201 %}</a><span class="note">201 Created</span></span>
+								<span class="crawlbin_url"><a href="{% url 'status_code' code=204 %}">{% url 'status_code' code=204 %}</a><span class="note">204 No Content</span></span>
+							</div>
+							<div class="col-md-3">
+								<h5>3xx Redirection</h5>
+								<span class="crawlbin_url"><a href="{% url 'status_code' code=301 %}">{% url 'status_code' code=301 %}</a><span class="note">301 Moved Permanently</span></span>
+								<span class="crawlbin_url"><a href="{% url 'status_code' code=302 %}">{% url 'status_code' code=302 %}</a><span class="note">302 Found</span></span>
+								<span class="crawlbin_url"><a href="{% url 'status_code' code=304 %}">{% url 'status_code' code=304 %}</a><span class="note">304 Not Modified</span></span>
+							</div>
+							<div class="col-md-3">
+								<h5>4xx Client Error</h5>
+								<span class="crawlbin_url"><a href="{% url 'status_code' code=400 %}">{% url 'status_code' code=400 %}</a><span class="note">400 Bad Request</span></span>
+								<span class="crawlbin_url"><a href="{% url 'status_code' code=401 %}">{% url 'status_code' code=401 %}</a><span class="note">401 Unauthorized</span></span>
+								<span class="crawlbin_url"><a href="{% url 'status_code' code=403 %}">{% url 'status_code' code=403 %}</a><span class="note">403 Forbidden</span></span>
+								<span class="crawlbin_url"><a href="{% url 'status_code' code=404 %}">{% url 'status_code' code=404 %}</a><span class="note">404 Not Found</span></span>
+								<span class="crawlbin_url"><a href="{% url 'status_code' code=410 %}">{% url 'status_code' code=410 %}</a><span class="note">410 Gone</span></span>
+								<span class="crawlbin_url"><a href="{% url 'status_code' code=418 %}">{% url 'status_code' code=418 %}</a><span class="note">418 I'm a teapot</span></span>
+								<span class="crawlbin_url"><a href="{% url 'status_code' code=429 %}">{% url 'status_code' code=429 %}</a><span class="note">429 Too Many Requests</span></span>
+							</div>
+							<div class="col-md-3">
+								<h5>5xx Server Error</h5>
+								<span class="crawlbin_url"><a href="{% url 'status_code' code=500 %}">{% url 'status_code' code=500 %}</a><span class="note">500 Internal Server Error</span></span>
+								<span class="crawlbin_url"><a href="{% url 'status_code' code=502 %}">{% url 'status_code' code=502 %}</a><span class="note">502 Bad Gateway</span></span>
+								<span class="crawlbin_url"><a href="{% url 'status_code' code=503 %}">{% url 'status_code' code=503 %}</a><span class="note">503 Service Unavailable</span></span>
+								<span class="crawlbin_url"><a href="{% url 'status_code' code=504 %}">{% url 'status_code' code=504 %}</a><span class="note">504 Gateway Timeout</span></span>
+							</div>
+						</div>
+					</div>
+
+					<!-- HTTP Test Scenarios -->
+					<div class="scenario-group">
+						<h3><a name="http-scenarios"></a>HTTP Test Scenarios</h3>
+						<div class="row">
+							<div class="col-md-6">
+								<h4>Request Inspection</h4>
+								<span class="crawlbin_url"><a href="{% url 'headers' %}">{% url 'headers' %}</a><span class="note">View all request headers</span></span>
+								<span class="crawlbin_url"><a href="{% url 'user_agent' %}">{% url 'user_agent' %}</a><span class="note">View User-Agent</span></span>
+								<span class="crawlbin_url"><a href="{% url 'ip_address' %}">{% url 'ip_address' %}</a><span class="note">View IP address</span></span>
+
+								<h4>HTTP Methods</h4>
+								<span class="crawlbin_url"><a href="{% url 'get_request' %}">{% url 'get_request' %}</a><span class="note">GET request data</span></span>
+								<span class="crawlbin_url"><a href="{% url 'post_request' %}">{% url 'post_request' %}</a><span class="note">POST request data</span></span>
+								<span class="crawlbin_url"><a href="{% url 'anything_request' %}">{% url 'anything_request' %}</a><span class="note">Any HTTP method</span></span>
+
+								<h4>Data Formats</h4>
+								<span class="crawlbin_url"><a href="{% url 'json_response' %}">{% url 'json_response' %}</a><span class="note">JSON response</span></span>
+								<span class="crawlbin_url"><a href="{% url 'xml_response' %}">{% url 'xml_response' %}</a><span class="note">XML response</span></span>
+								<span class="crawlbin_url"><a href="{% url 'html_response' %}">{% url 'html_response' %}</a><span class="note">HTML response</span></span>
+							</div>
+							<div class="col-md-6">
+								<h4>Cookies</h4>
+								<span class="crawlbin_url"><a href="{% url 'cookies' %}">{% url 'cookies' %}</a><span class="note">View cookies</span></span>
+								<span class="crawlbin_url"><a href="{% url 'cookies_set' name='session' value='abc123' %}">{% url 'cookies_set' name='session' value='abc123' %}</a><span class="note">Set session cookie</span></span>
+								<span class="crawlbin_url"><a href="{% url 'cookies_set' name='theme' value='dark' %}">{% url 'cookies_set' name='theme' value='dark' %}</a><span class="note">Set theme cookie</span></span>
+								<span class="crawlbin_url"><a href="{% url 'cookies_delete' name='session' %}">{% url 'cookies_delete' name='session' %}</a><span class="note">Delete session cookie</span></span>
+
+								<h4>Redirects</h4>
+								<span class="crawlbin_url"><a href="{% url 'redirect' %}">{% url 'redirect' %}</a><span class="note">Single redirect</span></span>
+								<span class="crawlbin_url"><a href="{% url 'redirect_chain' count=1 %}">{% url 'redirect_chain' count=1 %}</a><span class="note">1 redirect</span></span>
+								<span class="crawlbin_url"><a href="{% url 'redirect_chain' count=3 %}">{% url 'redirect_chain' count=3 %}</a><span class="note">3 redirects</span></span>
+								<span class="crawlbin_url"><a href="{% url 'redirect_chain' count=5 %}">{% url 'redirect_chain' count=5 %}</a><span class="note">5 redirects</span></span>
+								<span class="crawlbin_url"><a href="{% url 'redirect_chain' count=10 %}">{% url 'redirect_chain' count=10 %}</a><span class="note">10 redirects</span></span>
+
+								<h4>Utilities</h4>
+								<span class="crawlbin_url"><a href="{% url 'base64_decode' encoded_string='aGVsbG8gd29ybGQ=' %}">{% url 'base64_decode' encoded_string='aGVsbG8gd29ybGQ=' %}</a><span class="note">Decode "hello world"</span></span>
+								<span class="crawlbin_url"><a href="{% url 'base64_decode' encoded_string='SFRUUCBTY2VuYXJpb3M=' %}">{% url 'base64_decode' encoded_string='SFRUUCBTY2VuYXJpb3M=' %}</a><span class="note">Decode "HTTP Scenarios"</span></span>
+								<span class="crawlbin_url"><a href="{% url 'robots_txt' %}">{% url 'robots_txt' %}</a><span class="note">robots.txt file</span></span>
+							</div>
+						</div>
+					</div>
+
+					<hr>
+					<p class="text-center">
+						<a href="/" class="btn btn-primary">← Back to Documentation</a>
+						<span class="text-muted">Total scenarios: 100+</span>
+					</p>
+				</div>
+			</div>
+		</div>
+		<footer>
+			<p>Dev Tools are your friend :)</p>
+		</footer>
+		<script src="//code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha256-3edrmyuQ0w65f8gfBsqowzjJe2iM6n0nKciPUp8y+7E=" crossorigin="anonymous"></script>
+	</body>
+</html>

@@ -1,5 +1,5 @@
 # Byte-compiled / optimized / DLL files
-__pycache__/
+*__pycache__/
 *.py[cod]
 *$py.class
 
@@ -69,8 +69,32 @@ media/
 local_settings.py
 
 # Ignore dotenv
-.env
-.env.*
+*.env
+*.env.*
 
 # Ignore Mac system files
 .DS_Store
+
+# Virtual environments
+.venv/
+venv/
+ENV/
+env/
+.env/
+
+# SQLite databases
+*.sqlite3
+*.db
+
+# Log files
+*.log
+
+# Temporary files
+*.tmp
+*.temp
+*~
+
+# OS generated files
+Thumbs.db
+.Spotlight-V100
+.Trashes
