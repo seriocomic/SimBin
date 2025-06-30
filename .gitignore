@@ -82,7 +82,7 @@ ENV/
 env/
 .env/
 
-# SQLite databases
+# SQLite databases (not needed for this app)
 *.sqlite3
 *.db
 
