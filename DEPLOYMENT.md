@@ -22,23 +22,18 @@ This Django application (Simbin) is now ready for deployment to Coolify.
 Set these environment variables in Coolify:
 
 **Required:**
-- `SECRET_KEY`: A secure Django secret key (generate a new one for production)
+
+- `SECRET_KEY`: A secure Django secret key (generate a new one for production - minimum 50 characters)
 - `ALLOWED_HOSTS`: Your domain(s), comma-separated (e.g., `example.com,www.example.com`)
 
 **Optional:**
+
 - `DEBUG`: Set to `false` for production (default: `true`)
 - `DATABASE_URL`: PostgreSQL connection string if using external database
 
-### 3. Database Configuration
+### 3. Configuration
 
-**Option A: SQLite (Simple)**
-- No additional configuration needed
-- Data persists in container volume
-
-**Option B: PostgreSQL (Recommended for production)**
-- Add a PostgreSQL service in Coolify
-- Set the `DATABASE_URL` environment variable
-- Format: `postgres://username:password@hostname:5432/database_name`
+This application is **database-free** and stateless, making deployment extremely simple. No additional database configuration is needed.
 
 ### 4. Domain and SSL
 
