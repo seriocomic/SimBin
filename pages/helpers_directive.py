@@ -7,7 +7,7 @@ import logging
 import random
 import time
 
-logger = logging.getLogger('crawlbin.pages.helpers_directive')
+logger = logging.getLogger('simbin.pages.helpers_directive')
 
 
 def handle_redirect(directives, previous_parts):
@@ -64,7 +64,7 @@ def handle_redirect(directives, previous_parts):
 
     if 'response_401' in directives:
         status_code = 401
-        headers['WWW-Authenticate'] = 'Basic realm="crawlbin:"'
+        headers['WWW-Authenticate'] = 'Basic realm="simbin:"'
 
     if 'response_403' in directives:
         status_code = 403
@@ -332,7 +332,7 @@ def delay_directives(directives):
 
 
 def get_random_url(base):
-    """Return a random, valid crawlbin directive, concatenated to the
+    """Return a random, valid simbin directive, concatenated to the
     given base url.
 
     """

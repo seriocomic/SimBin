@@ -63,7 +63,7 @@ class RedirectTestCase(TestCase):
         self.assertEqual(headers_308, {'Location': 'testcase'})
         self.assertEqual(headers_400, {})
         self.assertEqual(headers_401, {
-            'WWW-Authenticate': 'Basic realm="crawlbin:"'
+            'WWW-Authenticate': 'Basic realm="simbin:"'
         })
         self.assertEqual(headers_403, {})
         self.assertEqual(headers_404, {})

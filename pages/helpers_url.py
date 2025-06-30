@@ -17,7 +17,7 @@ Blocks:
 A 'block' is any set of directives wrapped in [].
 
 There are two blocks here, with three directives in total:
-http://crawlbin.com/[meta_noindex+vary_cookie][response_404]/
+http://simbin.siteladon.com/[meta_noindex+vary_cookie][response_404]/
 
 One of the two blocks above would be selected at random. Directives in a
 block are joined with +.
@@ -25,7 +25,7 @@ block are joined with +.
 Nested blocks are possible, which introduces randomness within a block.
 
 For example, here there are two outer blocks (one has a nested block):
-http://crawlbin.com/[meta_index+[vary_cookie,vary_referer]][response_404]/
+http://simbin.siteladon.com/[meta_index+[vary_cookie,vary_referer]][response_404]/
 
 """
 
@@ -34,7 +34,7 @@ import re
 import random
 import user_agents
 
-logger = logging.getLogger('crawlbin.pages.helpers_url')
+logger = logging.getLogger('simbin.pages.helpers_url')
 
 
 def parse_brackets(url_path):
@@ -97,7 +97,7 @@ def random_nested_directives(block):
 
     which would be one of the blocks in this URL:
 
-    http://crawlbin.com/[meta_index+[vary_cookie,vary_referer]][response_404]/
+    http://simbin.siteladon.com/[meta_index+[vary_cookie,vary_referer]][response_404]/
 
     """
 

@@ -30,12 +30,12 @@ footer p {
     margin-top: 50px;
 }
 
-.crawlbin_directive {
+.simbin_directive {
     background-color: #eee;
     color: #337ab7;
     font-size: 1.1em;
 }
-.crawlbin_url {
+.simbin_url {
     font-size: 1.2em;
     padding: 10px;
     background-color: #eee;
@@ -49,7 +49,7 @@ footer p {
     padding-left: 20px;
     margin-top: 20px;
 }
-.crawlbin_url a {
+.simbin_url a {
     font-family: Courier;
 }
 a {

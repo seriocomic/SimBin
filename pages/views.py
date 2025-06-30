@@ -18,10 +18,10 @@ from pages.helpers_directive import index_follow_directives
 from pages.helpers_directive import vary_directives
 from pages.helpers_url import get_directives_from_random_matching_block
 
-logger = logging.getLogger('crawlbin.pages.views')
+logger = logging.getLogger('simbin.pages.views')
 
 def index(request):
-    """ Render the crawlbin index page.
+    """ Render the simbin index page.
 
     """
     return render(request, 'pages/index.html')
@@ -35,7 +35,7 @@ def scenarios(request):
 
 
 def robots(request):
-    """ Render the crawlbin robots.txt.
+    """ Render the simbin robots.txt.
 
     """
 
@@ -45,7 +45,7 @@ def robots(request):
 
 
 def handle(request, url):
-    """ Render all crawlbin urls.
+    """ Render all simbin urls.
 
     """
 

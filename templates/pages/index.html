@@ -2,16 +2,16 @@
 <html lang="en">
 	<head>
 		<meta charset="utf-8">
-		<title>smul8 - Simulate all the things</title>
+		<title>SimBin - Simulate all the things</title>
 		<link rel="icon" href="{% static 'favicon.ico' %}">
 		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-		<style>.crawlbin_directive,.crawlbin_url,.navbar,a{background-color:#eee}html{position:relative;min-height:100%}body{margin-bottom:60px}footer{position:absolute;bottom:0;width:100%;height:45px;padding-top:15px;background-color:#f5f5f5}footer p{text-align:center}.main{margin-top:50px}.crawlbin_url,.second_url,h4{margin-top:20px}.crawlbin_directive{color:#337ab7;font-size:1.1em}.crawlbin_url{font-size:1.2em;padding:10px;width:100%;display:block;margin-bottom:20px}.second_url{display:block;padding-left:20px}.crawlbin_url a{font-family:Courier}a:hover{text-decoration:none}.note{display:block;color:#666;font-size:.8em}ol{font-size:1.3em}ol a{padding:5px;width:50%;display:inline-block}ol li{margin:5px}h2.url{word-wrap:break-word;color:#aaa;font-size:1.8em}</style>
+		<style>.simbin_directive,.simbin_url,.navbar,a{background-color:#eee}html{position:relative;min-height:100%}body{margin-bottom:60px}footer{position:absolute;bottom:0;width:100%;height:45px;padding-top:15px;background-color:#f5f5f5}footer p{text-align:center}.main{margin-top:50px}.simbin_url,.second_url,h4{margin-top:20px}.simbin_directive{color:#337ab7;font-size:1.1em}.simbin_url{font-size:1.2em;padding:10px;width:100%;display:block;margin-bottom:20px}.second_url{display:block;padding-left:20px}.simbin_url a{font-family:Courier}a:hover{text-decoration:none}.note{display:block;color:#666;font-size:.8em}ol{font-size:1.3em}ol a{padding:5px;width:50%;display:inline-block}ol li{margin:5px}h2.url{word-wrap:break-word;color:#aaa;font-size:1.8em}</style>
 	</head>
 	<body>
 		<div class="jumbotron">
 			<div class="container">
-				<h1><em>crawl</em>bin</h1>
-				<p><a href="/">crawlbin</a> is designed for testing web crawlers against various search engine directives and HTTP responses, plus HTTP testing scenarios for APIs and clients.</p>
+				<h1><em>Sim</em>Bin</h1>
+				<p><a href="/">SimBin</a> is designed for testing web crawlers against various search engine directives and HTTP responses, plus HTTP testing scenarios for APIs and clients.</p>
 				<p>Inspired by <a href="https://httpbin.org/">httpbin</a>, forked from the original <a href="https://github.com/DistilledLtd/crawlbin">Crawlbin</a> repository.</p>
 			</div>
 		</div>
@@ -19,20 +19,20 @@
 			<div class="row">
 				<div class="col-md-12">
 					<h2>Introduction</h2>
-					<p>crawlbin provides two main categories of testing functionality:</p>
+					<p>SimBin provides two main categories of testing functionality:</p>
 					<ul>
 						<li><strong>Crawler Testing:</strong> Accepts flags in URLs which toggle various search engine directives and HTTP responses within complete HTML pages. Perfect for testing web crawlers against various scenarios they might encounter.</li>
 						<li><strong>HTTP Testing:</strong> Provides endpoints for testing HTTP clients, APIs, and request/response patterns similar to httpbin.org.</li>
 					</ul>
 					<p>For crawler testing, you can simulate a variety of issues which crawlers might encounter:</p>
-					<span class="crawlbin_url"><a href="/response_404/">/response_404/</a><span class="note">HTTP Status: 404 (Not Found)</span></span>
-					<span class="crawlbin_url"><a href="/meta_noindex/">/meta_noindex/</a><span class="note">&lt;meta name="robots" content="noindex" /&gt;</span></span>
-					<p>You can join flags together with <span class="crawlbin_directive">+</span>:
-					<span class="crawlbin_url"><a href="/meta_noindex+meta_nofollow+response_410/">/meta_noindex+meta_nofollow+response_410/</a><span class="note">HTTP Status: 410 (Gone)</span><span class="note">&lt;meta name="robots" content="nofollow noindex" /&gt;</span></span>
-					<p>You can create redirects from one block of flags to another with a <span class="crawlbin_directive">/</span>:
-					<span class="crawlbin_url"><a href="/canonical_self+vary_user_agent/response_301/">/canonical_self+vary_user_agent/response_301/</a><span class="note">HTTP Status: 301 (Permanent Redirect)</span><span class="second_url">&#8627; <a href="/canonical_self+vary_user_agent/">/canonical_self+vary_user_agent/</a><span class="note">Vary: User-Agent</span><span class="note">&lt;link rel="canonical" href="/canonical_self+vary_user_agent/" /&gt;</span></span></span>
+					<span class="simbin_url"><a href="/response_404/">/response_404/</a><span class="note">HTTP Status: 404 (Not Found)</span></span>
+					<span class="simbin_url"><a href="/meta_noindex/">/meta_noindex/</a><span class="note">&lt;meta name="robots" content="noindex" /&gt;</span></span>
+					<p>You can join flags together with <span class="simbin_directive">+</span>:
+					<span class="simbin_url"><a href="/meta_noindex+meta_nofollow+response_410/">/meta_noindex+meta_nofollow+response_410/</a><span class="note">HTTP Status: 410 (Gone)</span><span class="note">&lt;meta name="robots" content="nofollow noindex" /&gt;</span></span>
+					<p>You can create redirects from one block of flags to another with a <span class="simbin_directive">/</span>:
+					<span class="simbin_url"><a href="/canonical_self+vary_user_agent/response_301/">/canonical_self+vary_user_agent/response_301/</a><span class="note">HTTP Status: 301 (Permanent Redirect)</span><span class="second_url">&#8627; <a href="/canonical_self+vary_user_agent/">/canonical_self+vary_user_agent/</a><span class="note">Vary: User-Agent</span><span class="note">&lt;link rel="canonical" href="/canonical_self+vary_user_agent/" /&gt;</span></span></span>
 					<p>You can also create randomised requests and requests that target certain user agents:</p>
-					<span class="crawlbin_url">
+					<span class="simbin_url">
 						<a href="/[all:response_404][mobile:response_500][desktop:meta_noindex]/">/[all:response_404][mobile:response_500][desktop:meta_noindex]/</a>
 						<br /><br />
 						<span>Mobile devices:</span>
@@ -51,7 +51,7 @@
 					<hr />
 					<h2>Table of Contents</h2>
 					<ol>
-						<li><a href="#flag_list">Crawlbin Features</a>
+						<li><a href="#flag_list">SimBin Features</a>
 							<ul>
 								<li><a href="#response_codes">Response Codes &amp; Redirects</a></li>
 								<li><a href="#noindex_directive">no/index directive</a></li>
@@ -78,8 +78,8 @@
 						<li><a href="#faq">FAQ</a></li>
 					</ol>
 					<!-- Flag list Section -->
-					<h3><a name="flag_list"></a>Crawlbin Features</h3>
-					<p>crawlbin can take a variety of flags with various options. Here is the complete list.</p>
+					<h3><a name="flag_list"></a>SimBin Features</h3>
+					<p>SimBin can take a variety of flags with various options. Here is the complete list.</p>
 					<ol>
 						<li><a href="#response_codes">Response Codes &amp; Redirects</a></li>
 						<li><a href="#noindex_directive">no/index directive</a></li>
@@ -93,88 +93,88 @@
 					<h4><a name="response_codes"></a>Response Codes &amp; Redirects</h4>
 					<p>There are multiple HTTP response codes that are supported. With most response codes other flags will also still work so, for example, it is possible to craft a 404 page that has a canonical HTTP header, and two H1 tags. However, note that for response codes that redirect to a new page, no body content is returned.</p>
 					<p>The list of non-redirect response codes supported is:</p>
-					<span class="crawlbin_url">
+					<span class="simbin_url">
 						<a href="/response_400/">/response_400/</a>
 						<span class="note">HTTP Status: 400 (Bad Request)</span>
 					</span>
-					<span class="crawlbin_url">
+					<span class="simbin_url">
     					<a href="/response_401/">/response_401/</a>
 						<span class="note">HTTP Status: 401 (Unauthorized)</span>
 					</span>
-					<span class="crawlbin_url">
+					<span class="simbin_url">
 						<a href="/response_403/">/response_403/</a>
 						<span class="note">HTTP Status: 403 (Forbidden)</span>
 					</span>
-					<span class="crawlbin_url">
+					<span class="simbin_url">
 						<a href="/response_404/">/response_404/</a>
 						<span class="note">HTTP Status: 404 (Not Found)</span>
 					</span>
-					<span class="crawlbin_url">
+					<span class="simbin_url">
 						<a href="/response_410/">/response_410/</a>
 						<span class="note">HTTP Status: 410 (Gone)</span>
 					</span>
-					<span class="crawlbin_url">
+					<span class="simbin_url">
 						<a href="/response_418/">/response_418/</a>
 						<span class="note">HTTP Status: 418 (I'm a teapot)</span>
 					</span>
 
-					<span class="crawlbin_url">
+					<span class="simbin_url">
 						<a href="/response_500/">/response_500/</a>
 						<span class="note">HTTP Status: 500 (Internal Server Error)</span>
 					</span>
-					<span class="crawlbin_url">
+					<span class="simbin_url">
 						<a href="/response_503/">/response_503/</a>
 						<span class="note">HTTP Status: 503 (Service Unavailable)</span>
 					</span>
     				<!-- Redirects -->
 					<h5>Redirects</h5>
-					<p>When a redirect code is returned the associated 'Location' header is set to the next level 'down' of the URL as determined by a delimiting <span class="crawlbin_directive">/</span>:</p>
-					<span class="crawlbin_url"><a href="/canonical_self+vary_user_agent/response_301/">/canonical_self+vary_user_agent/response_301/</a><span class="note">HTTP Status: 301 (Permanent Redirect)</span><span class="second_url">&#8627; <a href="/canonical_self+vary_user_agent/">/canonical_self+vary_user_agent/</a><span class="note">Vary: User-Agent</span><span class="note">&lt;link rel="canonical" href="/canonical_self+vary_user_agent/" /&gt;</span></span></span>
+					<p>When a redirect code is returned the associated 'Location' header is set to the next level 'down' of the URL as determined by a delimiting <span class="simbin_directive">/</span>:</p>
+					<span class="simbin_url"><a href="/canonical_self+vary_user_agent/response_301/">/canonical_self+vary_user_agent/response_301/</a><span class="note">HTTP Status: 301 (Permanent Redirect)</span><span class="second_url">&#8627; <a href="/canonical_self+vary_user_agent/">/canonical_self+vary_user_agent/</a><span class="note">Vary: User-Agent</span><span class="note">&lt;link rel="canonical" href="/canonical_self+vary_user_agent/" /&gt;</span></span></span>
 					<p>The full list of supported redirect response codes:</p>
-					<span class="crawlbin_url">
+					<span class="simbin_url">
 						<a href="/response_301/">/response_301/</a>
 						<span class="note">HTTP Status: 301 (Moved Permanently)</span>
 					</span>
-					<span class="crawlbin_url">
+					<span class="simbin_url">
 						<a href="/response_302/">/response_302/</a>
 						<span class="note">HTTP Status: 302 (Found)</span>
 					</span>
-					<span class="crawlbin_url">
+					<span class="simbin_url">
 						<a href="/response_303/">/response_303/</a>
 						<span class="note">HTTP Status: 303 (See Other)</span>
 					</span>
-					<span class="crawlbin_url">
+					<span class="simbin_url">
 						<a href="/response_307/">/response_307/</a>
 						<span class="note">HTTP Status: 307 (Temporary Redirect)</span>
 					</span>
-					<span class="crawlbin_url">
+					<span class="simbin_url">
 						<a href="/response_308/">/response_308/</a>
 						<span class="note">HTTP Status: 308 (Permanent Redirect)</span>
 					</span>
 					<!-- no/index -->
 					<h4><a name="noindex_directive"></a>no/index directive</h4>
 					<p>The 'noindex' directive is supported in both meta tag and HTTP header forms:</p>
-					<span class="crawlbin_url">
+					<span class="simbin_url">
 						<a href="/meta_noindex/">/meta_noindex/</a>
 						<span class="note">&lt;meta name="robots" content="noindex" /&gt;</span>
 					</span>
-					<span class="crawlbin_url">
+					<span class="simbin_url">
 						<a href="/header_noindex/">/header_noindex/</a>
 						<span class="note">X-Robots-Tag: noindex</span>
 					</span>
 					<p>You can specify both 'index' and 'noindex' as values:</p>
-					<span class="crawlbin_url">
+					<span class="simbin_url">
 						<a href="/header_index/">/header_index/</a>
 						<span class="note">X-Robots-Tag: index</span>
 					</span>
 					<p>Just like other tags, they can be used together:</p>
-					<span class="crawlbin_url">
+					<span class="simbin_url">
 						<a href="/header_noindex+meta_noindex/">/header_noindex+meta_noindex/</a>
 						<span class="note">X-Robots-Tag: noindex</span>
 						<span class="note">&lt;meta name="robots" content="noindex" /&gt;</span>
 					</span>
 					<p>Conflicting values are allowed (either across the two forms, or within the same form):</p>
-					<span class="crawlbin_url">
+					<span class="simbin_url">
 						<a href="/header_noindex+header_index+meta_index+meta_noindex/">/header_noindex+header_index+meta_index+meta_noindex/</a>
 						<span class="note">X-Robots-Tag: noindex, index</span>
 						<span class="note">&lt;meta name="robots" content="noindex, index" /&gt;</span>
@@ -182,30 +182,30 @@
 					<!-- no/follow -->
 					<h4><a name="nofollow_directive"></a>no/follow directive</h4>
 					<p>The 'nofollow' directive is supported in both meta tag and HTTP header forms, and works similarly to the 'noindex' directive above:</p>
-					<span class="crawlbin_url">
+					<span class="simbin_url">
 						<a href="/meta_nofollow/">/meta_nofollow/</a>
 						<span class="note">&lt;meta name="robots" content="nofollow" /&gt;</span>
 					</span>
-					<span class="crawlbin_url">
+					<span class="simbin_url">
 						<a href="/header_follow/">/header_follow/</a>
 						<span class="note">X-Robots-Tag: follow</span>
 					</span>
 					<!-- h1 tag -->
 					<h4><a name="h1_tag"></a>H1 tags</h4>
-					<p>By default crawlbin serves a page with a single H1 header tag in the HTML source. However, there are options to have a page with zero or two H1 tags:</p>
-					<span class="crawlbin_url">
+					<p>By default SimBin serves a page with a single H1 header tag in the HTML source. However, there are options to have a page with zero or two H1 tags:</p>
+					<span class="simbin_url">
 						<a href="/h1_off/">/h1_off/</a>
-						<span class="note" style="text-decoration: line-through;">&lt;h1&gt;crawlbin&lt;/h1&gt;</span>
+						<span class="note" style="text-decoration: line-through;">&lt;h1&gt;SimBin&lt;/h1&gt;</span>
 					</span>
-					<span class="crawlbin_url">
+					<span class="simbin_url">
 						<a href="/h1_multiple/">/h1_multiple/</a>
-						<span class="note">&lt;h1&gt;crawlbin&lt;/h1&gt;</span>
+						<span class="note">&lt;h1&gt;SimBin&lt;/h1&gt;</span>
 						<span class="note">&lt;h1&gt;Another title&lt;/h1&gt;</span>
 					</span>
 					<!-- random_title tag -->
 					<h4><a name="title_tag"></a>Title tag</h4>
-					<p>By default crawlbin serves a page with the title 'Crawlb.in' in the HTML head. However, there is an option for the title to be either 'Crawlb.in' or 'Crawlb.in Alternative', selected randomly:</p>
-					<span class="crawlbin_url">
+					<p>By default SimBin serves a page with the title 'Crawlb.in' in the HTML head. However, there is an option for the title to be either 'Crawlb.in' or 'Crawlb.in Alternative', selected randomly:</p>
+					<span class="simbin_url">
 						<a href="/random_title/">/random_title/</a>
 						<span class="note">&lt;title&gt;Crawlb.in&lt;/title&gt;</span>
 					OR
@@ -213,72 +213,72 @@
 					</span>
 					<h4><a name="canonical"></a>Canonical</h4>
 					<p>The 'canonical' directive is supported in both meta tag and HTTP header forms. You can specify various values:</p>
-					<span class="crawlbin_url">
+					<span class="simbin_url">
 						<a href="/canonical_self/">/canonical_self/</a>
 						<span class="note">Link: &lt;/canonical_self/&gt;; rel="canonical"</span>
 						<span class="note">&lt;link rel="canonical" href="/canonical_self/" /&gt;</span>
 					</span>
-					<span class="crawlbin_url">
+					<span class="simbin_url">
 						<a href="/canonical_home/">/canonical_home/</a>
 						<span class="note">Link: &lt;/&gt;; rel="canonical"</span>
 						<span class="note">&lt;link rel="canonical" href="/" /&gt;</span>
 					</span>
-					<span class="crawlbin_url">
+					<span class="simbin_url">
 						<a href="/h1_multiple+meta_noindex/canonical_next_block/">/h1_multiple+meta_noindex/canonical_next_block/</a>
 						<span class="note">Link: &lt;/h1_multiple+meta_noindex/&gt;; rel="canonical"</span>
 						<span class="note">&lt;link rel="canonical" href="/h1_multiple+meta_noindex/" /&gt;</span>
 					</span>
 					<p>You can also specify whether you want just an HTTP header or just an HTML directive:</p>
-					<span class="crawlbin_url">
+					<span class="simbin_url">
 						<a href="/header_canonical_home/">/header_canonical_home/</a>
 						<span class="note">Link: &lt;/&gt;; rel="canonical"</span>
 					</span>
-					<span class="crawlbin_url">
+					<span class="simbin_url">
 						<a href="/html_canonical_home/">/html_canonical_home/</a>
 						<span class="note">&lt;link rel="canonical" href="/" /&gt;</span>
 					</span>
 					<p>And it is permitted to combine these with conflicting values:</p>
-					<span class="crawlbin_url">
+					<span class="simbin_url">
 						<a href="/h1_multiple+meta_noindex/html_canonical_next_block+header_canonical_self/">/h1_multiple+meta_noindex/html_canonical_next_block+header_canonical_self/</a>
 						<span class="note">Link: &lt;/h1_multiple+meta_noindex/html_canonical_next_block+header_canonical_self/&gt;; rel="canonical"</span>
 						<span class="note">&lt;link rel="canonical" href="/h1_multiple+meta_noindex/" /&gt;</span>
 					</span>
 					<h4><a name="vary_header"></a>Vary HTTP header</h4>
 					<p>There are various allowed values for the Vary HTTP header:</p>
-					<span class="crawlbin_url">
+					<span class="simbin_url">
 						<a href="/vary_accept_encoding/">/vary_accept_encoding/</a>
 						<span class="note">Vary: Accept-Encoding</span>
 					</span>
-					<span class="crawlbin_url">
+					<span class="simbin_url">
 						<a href="/vary_user_agent/">/vary_user_agent/</a>
 						<span class="note">Vary: User-Agent</span>
 					</span>
-					<span class="crawlbin_url">
+					<span class="simbin_url">
 						<a href="/vary_cookie/">/vary_cookie/</a>
 						<span class="note">Vary: Cookie</span>
 					</span>
-					<span class="crawlbin_url">
+					<span class="simbin_url">
 						<a href="/vary_referer/">/vary_referer/</a>
 						<span class="note">Vary: Referer</span>
 					</span>
 					<p>You may join multiple values:</p>
-					<span class="crawlbin_url">
+					<span class="simbin_url">
 						<a href="/vary_user_agent+vary_cookie/">/vary_user_agent+vary_cookie/</a>
 						<span class="note">Vary: User-Agent, Cookie</span>
 					</span>
 					<!-- Random Section -->
 					<h3><a name="random"></a>Randomised responses</h3>
-					<p>It is possible to supply multiple, alternative, blocks of flags which are selected at random, such that responses are less predictable. Each block must be surounded by square brackets: <span class="crawlbin_directive">[]</span> .</p>
-					<span class="crawlbin_url">
+					<p>It is possible to supply multiple, alternative, blocks of flags which are selected at random, such that responses are less predictable. Each block must be surounded by square brackets: <span class="simbin_directive">[]</span> .</p>
+					<span class="simbin_url">
 						<a href="/[meta_noindex+vary_cookie][response_404]/">/[meta_noindex+vary_cookie][response_404]/</a>
 						<span class="note">Vary: Cookie</span>
 						<span class="note">&lt;meta name="robots" content="noindex" /&gt;</span>
 						OR
 						<span class="note">HTTP Status: 404 (Not Found)</span>
 					</span>
-					<p>You can supply as many of these alternative blocks as you wish between any two <span class="crawlbin_directive">/</span> separated blocks.</p>
-					<p>Furthermore, there is a single level of nesting that is possible with randomisation. In this case nested sets of <span class="crawlbin_directive">[]</span> are used and the flags must be comma separated.</p>
-					<span class="crawlbin_url">
+					<p>You can supply as many of these alternative blocks as you wish between any two <span class="simbin_directive">/</span> separated blocks.</p>
+					<p>Furthermore, there is a single level of nesting that is possible with randomisation. In this case nested sets of <span class="simbin_directive">[]</span> are used and the flags must be comma separated.</p>
+					<span class="simbin_url">
 						<a href="/[meta_noindex+[vary_cookie,vary_referer]][response_404]/">/[meta_noindex+[vary_cookie,vary_referer]][response_404]/</a>
 						<span class="note">Vary: Cookie</span>
 						<span class="note">&lt;meta name="robots" content="noindex" /&gt;</span>
@@ -291,8 +291,8 @@
 					<p>This nesting allows for more complex sets of randomisation, but can also be combined with the user-agent targeting below.</p>
 					<!-- User-Agent Section -->
 					<h3><a name="user_agent"></a>User-agent determined responses</h3>
-					<p>It is possible to target different blocks of flags towards different devices or crawlers based upo their user agent. To do this you must enclose a block of flags in square brackets <span class="crawlbin_directive">[]</span>, as per above, and then prefix this block with a user agent flag and a <span class="crawlbin_directive">:</span>.</p>
-					<span class="crawlbin_url">
+					<p>It is possible to target different blocks of flags towards different devices or crawlers based upo their user agent. To do this you must enclose a block of flags in square brackets <span class="simbin_directive">[]</span>, as per above, and then prefix this block with a user agent flag and a <span class="simbin_directive">:</span>.</p>
+					<span class="simbin_url">
 						<a href="/[mobile:response_500][meta_noindex]/">/[mobile:response_500][meta_noindex]/</a>
 						<br /><br />
 						<span>Mobile devices:</span>
@@ -303,17 +303,17 @@
 					</span>
 					<p>The list of user agent flags accepted and what they match to are:</p>
 					<ul>
-						<li><span class="crawlbin_directive">all</span> - All user agents.</li>
-						<li><span class="crawlbin_directive">bot</span> - Any bot.</li>
-						<li><span class="crawlbin_directive">googlebot</span> - Googlebot but not other bots.</li>
-						<li><span class="crawlbin_directive">desktop</span> - Any desktop browser.</li>
-						<li><span class="crawlbin_directive">mobile</span> - Any mobile browser.</li>
-						<li><span class="crawlbin_directive">tablet</span> - Any tablet browser.</li>
-						<li><span class="crawlbin_directive">ie</span> - Any version of Internet Explorer.</li>
-						<li><span class="crawlbin_directive">ff</span> - Any version of Firefox.</li>
+						<li><span class="simbin_directive">all</span> - All user agents.</li>
+						<li><span class="simbin_directive">bot</span> - Any bot.</li>
+						<li><span class="simbin_directive">googlebot</span> - Googlebot but not other bots.</li>
+						<li><span class="simbin_directive">desktop</span> - Any desktop browser.</li>
+						<li><span class="simbin_directive">mobile</span> - Any mobile browser.</li>
+						<li><span class="simbin_directive">tablet</span> - Any tablet browser.</li>
+						<li><span class="simbin_directive">ie</span> - Any version of Internet Explorer.</li>
+						<li><span class="simbin_directive">ff</span> - Any version of Firefox.</li>
 					</ul>
-					<p>When a request is made crawlbin will select all possible blocks which match the user-agent, and then select amongst them randomly in the same fashion as outlined above. A particular request might match against multiple user agent flags (for example <span class="crawlbin_directive">desktop</span> and <span class="crawlbin_directive">ie</span> flags may both be relevant and selected).</p>
-					<span class="crawlbin_url">
+					<p>When a request is made SimBin will select all possible blocks which match the user-agent, and then select amongst them randomly in the same fashion as outlined above. A particular request might match against multiple user agent flags (for example <span class="simbin_directive">desktop</span> and <span class="simbin_directive">ie</span> flags may both be relevant and selected).</p>
+					<span class="simbin_url">
 						<a href="/[all:response_404][mobile:response_500][desktop:meta_noindex]/">/[all:response_404][mobile:response_500][desktop:meta_noindex]/</a>
 						<br /><br />
 						<span>Mobile devices:</span>
@@ -330,14 +330,14 @@
 						<span class="note">HTTP Status: 404 (Not Found)</span>
 					</span>
 					<h3><a name="faq"></a>FAQ</h3>
-					<h4>What's the difference between crawlbin features and HTTP scenarios?</h4>
-					<p>Crawlbin features (flags) are designed specifically for testing web crawlers and search engine behavior. HTTP scenarios provide general HTTP testing capabilities for any HTTP client or API testing.</p>
+					<h4>What's the difference between SimBin features and HTTP scenarios?</h4>
+					<p>SimBin features (flags) are designed specifically for testing web crawlers and search engine behavior. HTTP scenarios provide general HTTP testing capabilities for any HTTP client or API testing.</p>
 					<h4>Do you handle POST requests?</h4>
-					<p>Yes, in the HTTP scenarios section. The crawlbin flags are primarily designed for GET requests to simulate crawler behavior.</p>
+					<p>Yes, in the HTTP scenarios section. The SimBin flags are primarily designed for GET requests to simulate crawler behavior.</p>
 					<h4>Do you handle HTTPS requests?</h4>
 					<p>This depends on your deployment configuration. The application itself supports HTTPS when properly configured.</p>
-					<h4>Can I combine crawlbin flags with HTTP scenarios?</h4>
-					<p>No, these are separate systems. Crawlbin flags use a specific URL pattern, while HTTP scenarios use dedicated endpoints under /http/.</p>
+					<h4>Can I combine SimBin flags with HTTP scenarios?</h4>
+					<p>No, these are separate systems. SimBin flags use a specific URL pattern, while HTTP scenarios use dedicated endpoints under /http/.</p>
 				</div>
 			</div>
 			<!-- HTTP Scenarios Section -->
@@ -347,15 +347,15 @@
 			<!-- HTTP Status Codes -->
 			<h4><a name="http_status"></a>HTTP Status Codes</h4>
 			<p>Test your application's handling of various HTTP status codes:</p>
-			<span class="crawlbin_url">
+			<span class="simbin_url">
 				<a href="{% url 'status_code' code=200 %}">{% url 'status_code' code=200 %}</a>
 				<span class="note">HTTP Status: 200 (OK)</span>
 			</span>
-			<span class="crawlbin_url">
+			<span class="simbin_url">
 				<a href="{% url 'status_code' code=404 %}">{% url 'status_code' code=404 %}</a>
 				<span class="note">HTTP Status: 404 (Not Found)</span>
 			</span>
-			<span class="crawlbin_url">
+			<span class="simbin_url">
 				<a href="{% url 'status_code' code=500 %}">{% url 'status_code' code=500 %}</a>
 				<span class="note">HTTP Status: 500 (Internal Server Error)</span>
 			</span>
@@ -364,15 +364,15 @@
 			<!-- HTTP Redirects -->
 			<h4><a name="http_redirects"></a>HTTP Redirects</h4>
 			<p>Test redirect chains and various redirect scenarios:</p>
-			<span class="crawlbin_url">
+			<span class="simbin_url">
 				<a href="{% url 'redirect' %}">{% url 'redirect' %}</a>
 				<span class="note">HTTP Status: 302 (Found) → redirects 1 time</span>
 			</span>
-			<span class="crawlbin_url">
+			<span class="simbin_url">
 				<a href="{% url 'redirect_chain' count=3 %}">{% url 'redirect_chain' count=3 %}</a>
 				<span class="note">HTTP Status: 302 (Found) → redirects 3 times</span>
 			</span>
-			<span class="crawlbin_url">
+			<span class="simbin_url">
 				<a href="{% url 'redirect_chain' count=10 %}">{% url 'redirect_chain' count=10 %}</a>
 				<span class="note">HTTP Status: 302 (Found) → redirects 10 times</span>
 			</span>
@@ -381,15 +381,15 @@
 			<!-- HTTP Headers -->
 			<h4><a name="http_headers"></a>HTTP Headers</h4>
 			<p>Inspect and test HTTP request headers:</p>
-			<span class="crawlbin_url">
+			<span class="simbin_url">
 				<a href="{% url 'headers' %}">{% url 'headers' %}</a>
 				<span class="note">Returns JSON with all request headers</span>
 			</span>
-			<span class="crawlbin_url">
+			<span class="simbin_url">
 				<a href="{% url 'user_agent' %}">{% url 'user_agent' %}</a>
 				<span class="note">Returns your User-Agent string</span>
 			</span>
-			<span class="crawlbin_url">
+			<span class="simbin_url">
 				<a href="{% url 'ip_address' %}">{% url 'ip_address' %}</a>
 				<span class="note">Returns your IP address</span>
 			</span>
@@ -397,15 +397,15 @@
 			<!-- HTTP Cookies -->
 			<h4><a name="http_cookies"></a>HTTP Cookies</h4>
 			<p>Test cookie handling and session management:</p>
-			<span class="crawlbin_url">
+			<span class="simbin_url">
 				<a href="{% url 'cookies' %}">{% url 'cookies' %}</a>
 				<span class="note">Returns all cookies sent in the request</span>
 			</span>
-			<span class="crawlbin_url">
+			<span class="simbin_url">
 				<a href="{% url 'cookies_set' name='test' value='value' %}">{% url 'cookies_set' name='test' value='value' %}</a>
 				<span class="note">Sets a cookie named 'test' with value 'value'</span>
 			</span>
-			<span class="crawlbin_url">
+			<span class="simbin_url">
 				<a href="{% url 'cookies_delete' name='test' %}">{% url 'cookies_delete' name='test' %}</a>
 				<span class="note">Deletes the cookie named 'test'</span>
 			</span>
@@ -413,17 +413,17 @@
 			<!-- Data Formats -->
 			<h4><a name="http_data"></a>Data Formats</h4>
 			<p>Test various data format responses:</p>
-			<span class="crawlbin_url">
+			<span class="simbin_url">
 				<a href="{% url 'json_response' %}">{% url 'json_response' %}</a>
 				<span class="note">Content-Type: application/json</span>
 				<span class="note">Returns sample JSON data</span>
 			</span>
-			<span class="crawlbin_url">
+			<span class="simbin_url">
 				<a href="{% url 'xml_response' %}">{% url 'xml_response' %}</a>
 				<span class="note">Content-Type: application/xml</span>
 				<span class="note">Returns sample XML data</span>
 			</span>
-			<span class="crawlbin_url">
+			<span class="simbin_url">
 				<a href="{% url 'html_response' %}">{% url 'html_response' %}</a>
 				<span class="note">Content-Type: text/html</span>
 				<span class="note">Returns sample HTML content</span>
@@ -432,11 +432,11 @@
 			<!-- Encoding & Utilities -->
 			<h4><a name="http_encoding"></a>Encoding & Utilities</h4>
 			<p>Test encoding and decoding utilities:</p>
-			<span class="crawlbin_url">
+			<span class="simbin_url">
 				<a href="{% url 'base64_decode' encoded_string='SFRUUCBTY2VuYXJpb3M=' %}">{% url 'base64_decode' encoded_string='SFRUUCBTY2VuYXJpb3M=' %}</a>
 				<span class="note">Decodes the Base64 string: "HTTP Scenarios"</span>
 			</span>
-			<span class="crawlbin_url">
+			<span class="simbin_url">
 				<a href="{% url 'robots_txt' %}">{% url 'robots_txt' %}</a>
 				<span class="note">Content-Type: text/plain</span>
 				<span class="note">Returns a robots.txt file</span>
@@ -445,15 +445,15 @@
 			<!-- HTTP Request Testing -->
 			<h4><a name="http_requests"></a>HTTP Request Testing</h4>
 			<p>Test different HTTP methods and request types:</p>
-			<span class="crawlbin_url">
+			<span class="simbin_url">
 				<a href="{% url 'get_request' %}">{% url 'get_request' %}</a>
 				<span class="note">Accepts GET requests, returns request data</span>
 			</span>
-			<span class="crawlbin_url">
+			<span class="simbin_url">
 				<a href="{% url 'post_request' %}">{% url 'post_request' %}</a>
 				<span class="note">Accepts POST requests, returns posted data</span>
 			</span>
-			<span class="crawlbin_url">
+			<span class="simbin_url">
 				<a href="{% url 'anything_request' %}">{% url 'anything_request' %}</a>
 				<span class="note">Accepts any HTTP method, returns request data</span>
 			</span>

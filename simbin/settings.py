@@ -1,5 +1,5 @@
 """
-Django settings for crawlbin project.
+Django settings for simbin project.
 
 For more information on this file, see
 https://docs.djangoproject.com/en/1.11/topics/settings/
@@ -51,9 +51,9 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'crawlbin.urls'
+ROOT_URLCONF = 'simbin.urls'
 
-WSGI_APPLICATION = 'crawlbin.wsgi.application'
+WSGI_APPLICATION = 'simbin.wsgi.application'
 
 
 # Database
