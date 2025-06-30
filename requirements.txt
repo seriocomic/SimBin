@@ -1,8 +1,9 @@
-Django
-Padding
-pycrypto
-requests
-tldextract
-ua-parser
-user-agents
-wheel
+Django>=5.0,<6.0
+requests>=2.31.0
+tldextract>=5.1.2
+ua-parser>=0.18.0
+user-agents>=2.2.0
+wheel>=0.42.0
+# Removed pycrypto (deprecated, security issues)
+# Removed Padding (not needed for Django 5)
+pycryptodome>=3.19.0
