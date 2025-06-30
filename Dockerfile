@@ -25,8 +25,11 @@ COPY . /app/
 # Make entrypoint script executable
 RUN chmod +x /app/entrypoint.sh
 
-# Collect static files
-RUN python manage.py collectstatic --noinput
+# Create staticfiles directory
+RUN mkdir -p /app/staticfiles
+
+# Collect static files (this will run during build)
+RUN python manage.py collectstatic --noinput --clear
 
 # Create a non-root user
 RUN useradd --create-home --shell /bin/bash app

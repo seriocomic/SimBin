@@ -32,6 +32,7 @@ APPEND_SLASH = False
 # Application definition
 
 INSTALLED_APPS = [
+    'django.contrib.staticfiles',  # Needed for static file handling
     'pages',  # Our main app
 ]
 
@@ -58,6 +59,7 @@ TEMPLATES = [
             'context_processors': [
                 'django.template.context_processors.debug',
                 'django.template.context_processors.request',
+                'django.template.context_processors.static',  # Needed for static files
             ],
         },
     },
