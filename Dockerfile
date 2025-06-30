@@ -37,14 +37,14 @@ RUN chown -R app:app /app
 USER app
 
 # Expose port
-EXPOSE 8000
+EXPOSE 8881
 
 # Health check
 HEALTHCHECK --interval=30s --timeout=30s --start-period=5s --retries=3 \
-    CMD python -c "import requests; requests.get('http://localhost:8000/health/', timeout=10)" || exit 1
+    CMD python -c "import requests; requests.get('http://localhost:8881/health/', timeout=10)" || exit 1
 
 # Set entrypoint
 ENTRYPOINT ["/app/entrypoint.sh"]
 
 # Run the application with Gunicorn
-CMD ["gunicorn", "--bind", "0.0.0.0:8000", "--workers", "3", "--timeout", "120", "simbin.wsgi:application"]
+CMD ["gunicorn", "--bind", "0.0.0.0:8881", "--workers", "3", "--timeout", "120", "simbin.wsgi:application"]

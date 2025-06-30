@@ -98,4 +98,4 @@ nano .env
 docker-compose up --build
 ```
 
-The application will be available at `http://localhost:8000`
+The application will be available at `http://localhost:8881`
