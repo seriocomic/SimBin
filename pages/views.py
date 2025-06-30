@@ -8,6 +8,7 @@ import tldextract
 
 from django.shortcuts import render
 from django.conf import settings
+from django.http import JsonResponse
 
 from pages.helpers_directive import canonical_directives
 from pages.helpers_directive import delay_directives
@@ -138,3 +139,10 @@ def handle(request, url):
         response[header_key] = header_val
 
     return response
+
+
+def health_check(request):
+    """ Health check endpoint for container monitoring.
+    
+    """
+    return JsonResponse({'status': 'healthy', 'message': 'Simbin is running'})

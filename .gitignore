@@ -98,3 +98,7 @@ env/
 Thumbs.db
 .Spotlight-V100
 .Trashes
+
+# Docker
+.dockerignore
+docker-compose.override.yml

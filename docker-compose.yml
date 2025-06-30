@@ -1,0 +1,28 @@
+version: '3.8'
+
+services:
+  web:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      - DEBUG=true
+      - SECRET_KEY=your-secret-key-here
+      - ALLOWED_HOSTS=localhost,127.0.0.1
+    volumes:
+      - .:/app
+    command: python manage.py runserver 0.0.0.0:8000
+
+  db:
+    image: postgres:16
+    environment:
+      POSTGRES_DB: simbin
+      POSTGRES_USER: simbin
+      POSTGRES_PASSWORD: simbin
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+volumes:
+  postgres_data:

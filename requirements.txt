@@ -1,9 +1,15 @@
-Django>=5.0,<6.0
-requests>=2.31.0
+Django>=5.1,<6.0
+requests>=2.32.0
 tldextract>=5.1.2
 ua-parser>=0.18.0
 user-agents>=2.2.0
-wheel>=0.42.0
+wheel>=0.44.0
 # Removed pycrypto (deprecated, security issues)
 # Removed Padding (not needed for Django 5)
-pycryptodome>=3.19.0
+pycryptodome>=3.20.0
+
+# Production dependencies
+gunicorn>=23.0.0
+dj-database-url>=2.2.0
+whitenoise>=6.7.0
+psycopg2-binary>=2.9.9

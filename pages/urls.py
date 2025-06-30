@@ -4,6 +4,7 @@ from pages import views
 
 urlpatterns = [
     path('favicon.ico/', RedirectView.as_view(url='/static/favicon.ico')),
+    path('health/', views.health_check, name='health_check'),
     path('robots.txt', views.robots, name='robots'),
     path('scenarios/', views.scenarios, name='scenarios'),
     re_path(r'^(?P<url>.*)/$', views.handle, name='handle'),
