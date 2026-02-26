@@ -67,6 +67,7 @@ media/
 
 # Ignore local settings
 local_settings.py
+settings_production.py
 
 # Ignore dotenv
 *.env
