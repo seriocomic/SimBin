@@ -1,73 +1,102 @@
 {% load static %}<!DOCTYPE html>
-<html lang="en">
-	<head>
-		<meta charset="utf-8">
-		<title>{{title}}</title>
-		<link rel="icon" href="{% static 'favicon.ico' %}">
-		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-		<style>.simbin_directive,.simbin_url,.navbar,a{background-color:#eee}html{position:relative;min-height:100%}body{margin-bottom:60px}footer{position:absolute;bottom:0;width:100%;height:45px;padding-top:15px;background-color:#f5f5f5}.main{margin-top:50px}.simbin_url,.second_url,h4{margin-top:20px}.simbin_directive{color:#337ab7;font-size:1.1em}.simbin_url{font-size:1.2em;padding:10px;width:100%;display:block;margin-bottom:20px}.second_url{display:block;padding-left:20px}.simbin_url a{font-family:Courier}a:hover{text-decoration:none}.note{display:block;color:#666;font-size:.8em}ol{font-size:1.3em}ol a{padding:5px;width:50%;display:inline-block}ol li{margin:5px}h2.url{word-wrap:break-word;color:#aaa;font-size:1.8em}</style>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{title}} - SimBin</title>
+  <link rel="icon" href="{% static 'favicon.ico' %}">
+  <script>(function(){var s=localStorage.getItem('simbin-theme');if(!s)s=window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',s);})();</script>
+  <link rel="stylesheet" href="{% static 'template.css' %}">
 {% if meta_follow_index_string %}
-		<meta name="robots" content="{{ meta_follow_index_string }}">
+  <meta name="robots" content="{{ meta_follow_index_string }}">
 {% endif %}
 {% if canonical_next_block %}
-		<link rel="canonical" href="{{canonical_next_block}}" />
+  <link rel="canonical" href="{{canonical_next_block}}">
 {% endif %}
 {% if canonical_random %}
-		<link rel="canonical" href="{{canonical_random}}" />
+  <link rel="canonical" href="{{canonical_random}}">
 {% endif %}
 {% if canonical_self %}
-		<link rel="canonical" href="{{canonical_self}}" />
+  <link rel="canonical" href="{{canonical_self}}">
 {% endif %}
 {% if canonical_home %}
-		<link rel="canonical" href="{{canonical_home}}" />
+  <link rel="canonical" href="{{canonical_home}}">
 {% endif %}
-	</head>
-	<body>
+  <script type="application/ld+json">{{jsonld_data|safe}}</script>
+</head>
+<body>
 
-		<nav class="navbar navbar-fixed-top">
-			<div class="container">
-				<div class="navbar-header">
-					<a class="navbar-brand" href="/">SimBin</a>
-				</div>
-			</div>
-		</nav>
+{% if h1 != "off" %}<h1 class="sr-only">SimBin{% if h1 == "multiple" %}</h1><h1 class="sr-only">Another title{% endif %}</h1>{% endif %}
 
-	<div class="container main clearfix">
-		<div class="row">
-			<div class="col-md-12">
+<nav class="navbar">
+  <a class="navbar-brand" href="/"><span>Sim</span>Bin</a>
+  <button type="button" class="theme-toggle" id="theme-toggle" onclick="toggleTheme()">Dark</button>
+</nav>
 
-				{% if h1 != "off" %}
-				<h1>SimBin: </h1>
-					{% if h1 == "multiple" %}
-						<h1>Another title</h1>
-					{% endif %}
-				{% endif %}
+<div class="main">
 
-				<h2 class='url'>/{{url}}/</h2>
+  <div class="url-header">
+    <div class="url-path"><a href="/{{url}}/">/ {{url}} /</a></div>
+    {% with code=status_code %}
+    <span class="status-badge status-{% if code >= 500 %}5xx{% elif code >= 400 %}4xx{% elif code >= 300 %}3xx{% else %}2xx{% endif %}">HTTP {{ code }}</span>
+    {% endwith %}
+  </div>
 
-				<h3>Flags affecting this page: </h3>
+  <!-- HTTP Response -->
+  <div class="section">
+    <div class="section-title">HTTP Response</div>
+    <div class="signal-table">
+      {% for s in http_signals %}
+      <div class="signal-row impact-{{s.impact}}{% if not s.active %} baseline{% endif %}">
+        <span class="signal-dot dot-{{s.impact}}"></span>
+        <span class="signal-name">{{s.name}}</span>
+        <span class="signal-value">{{s.value}}</span>
+        <span class="signal-note">{{s.annotation}}</span>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
 
-				{% for directive in directives %}
-				<span class="simbin_url">
-					<a href="/#{{directive}}">{{directive}}</a>
-				</span>
-				{% endfor %}
+  <!-- HTML <head> -->
+  <div class="section">
+    <div class="section-title">HTML &lt;head&gt;</div>
+    <div class="signal-table">
+      {% for s in head_signals %}
+      <div class="signal-row impact-{{s.impact}}{% if not s.active %} baseline{% endif %}">
+        <span class="signal-dot dot-{{s.impact}}"></span>
+        <span class="signal-name">{{s.name}}</span>
+        <span class="signal-value">{{s.value}}</span>
+        <span class="signal-note">{{s.annotation}}</span>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
 
-				<h3>Headers sent with this response: </h3>
+  <!-- HTML <body> -->
+  <div class="section">
+    <div class="section-title">HTML &lt;body&gt;</div>
+    <div class="signal-table">
+      {% for s in body_signals %}
+      <div class="signal-row impact-{{s.impact}}{% if not s.active %} baseline{% endif %}">
+        <span class="signal-dot dot-{{s.impact}}"></span>
+        <span class="signal-name">{{s.name}}</span>
+        <span class="signal-value">{{s.value}}</span>
+        <span class="signal-note">{{s.annotation}}</span>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
 
-				{% for key, value in headers.items %}
-				<span class="simbin_url">
-					<a href="/#{{key}}">{{key}}</a>: {{value}}
-				</span>
-				{% empty %}
-				<p>No headers sent</p>
-				{% endfor %}
-			</div>
-		</div>
-	</div>
-	<footer>
-		<p class="text-center">This is a <a href="https://www.qnq.com.au/">QnQ</a> production - made for <a href="https://www.siteladon.com">SiteLadon</a> - Dev Tools are your friend :)</p>
-	</footer>
-	<script src="//code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha256-3edrmyuQ0w65f8gfBsqowzjJe2iM6n0nKciPUp8y+7E=" crossorigin="anonymous"></script>
-	</body>
+</div>
+
+<footer>
+  A <a href="https://www.qnq.com.au/">QnQ</a> production - built for crawler and agent testing. <a href="/">Home</a>
+</footer>
+
+<script>
+  function toggleTheme(){var h=document.documentElement,d=h.getAttribute('data-theme')==='dark',n=d?'light':'dark';h.setAttribute('data-theme',n);localStorage.setItem('simbin-theme',n);document.getElementById('theme-toggle').textContent=d?'Dark':'Light';}
+  (function(){var s=localStorage.getItem('simbin-theme');if(!s)s=window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.getElementById('theme-toggle').textContent=s==='dark'?'Light':'Dark';})();
+</script>
+
+</body>
 </html>

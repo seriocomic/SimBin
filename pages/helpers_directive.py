@@ -7,7 +7,7 @@ import logging
 import random
 import time
 
-logger = logging.getLogger('simbin.pages.helpers_directive')
+logger = logging.getLogger("simbin.pages.helpers_directive")
 
 
 def handle_redirect(directives, previous_parts):
@@ -36,59 +36,59 @@ def handle_redirect(directives, previous_parts):
     context = {}
     headers = {}
 
-    if 'response_301' in directives:
+    if "response_301" in directives:
         status_code = 301
-        headers['Location'] = previous_parts
+        headers["Location"] = previous_parts
 
-    if 'response_302' in directives:
+    if "response_302" in directives:
         status_code = 302
-        headers['Location'] = previous_parts
+        headers["Location"] = previous_parts
 
-    if 'response_303' in directives:
+    if "response_303" in directives:
         status_code = 303
-        headers['Location'] = previous_parts
+        headers["Location"] = previous_parts
 
     # TODO: add support for 304.
     # No body content should be returned for a 304.
 
-    if 'response_307' in directives:
+    if "response_307" in directives:
         status_code = 307
-        headers['Location'] = previous_parts
+        headers["Location"] = previous_parts
 
-    if 'response_308' in directives:
+    if "response_308" in directives:
         status_code = 308
-        headers['Location'] = previous_parts
+        headers["Location"] = previous_parts
 
-    if 'response_400' in directives:
+    if "response_400" in directives:
         status_code = 400
 
-    if 'response_401' in directives:
+    if "response_401" in directives:
         status_code = 401
-        headers['WWW-Authenticate'] = 'Basic realm="simbin:"'
+        headers["WWW-Authenticate"] = 'Basic realm="simbin:"'
 
-    if 'response_403' in directives:
+    if "response_403" in directives:
         status_code = 403
 
-    if 'response_404' in directives:
+    if "response_404" in directives:
         status_code = 404
 
-    if 'response_410' in directives:
+    if "response_410" in directives:
         status_code = 410
 
-    if 'response_418' in directives:
+    if "response_418" in directives:
         status_code = 418
 
-    if 'response_500' in directives:
+    if "response_500" in directives:
         status_code = 500
 
-    if 'response_503' in directives:
+    if "response_503" in directives:
         status_code = 503
 
     return context, headers, status_code
 
 
 def h1_directive(directives):
-    """ Handle the H1 directives:
+    """Handle the H1 directives:
 
     - h1_off
     - h1_on
@@ -99,32 +99,32 @@ def h1_directive(directives):
 
     """
 
-    if 'h1_off' in directives:
-        return {'h1': 'off'}, {}
+    if "h1_off" in directives:
+        return {"h1": "off"}, {}
 
-    if 'h1_multiple' in directives:
-        return {'h1': 'multiple'}, {}
+    if "h1_multiple" in directives:
+        return {"h1": "multiple"}, {}
 
-    return {'h1': ''}, {}
+    return {"h1": ""}, {}
 
 
 def title_tag_directive(directives):
-    """ Handle the title tag directive:
+    """Handle the title tag directive:
 
     - random_title
 
-    Title is always 'Crawlb.in' in the absence of a directive
+    Title is always 'SimBin' in the absence of a directive
 
     """
 
-    titles = ['Crawlb.in', 'Crawlb.in Alternative']
+    titles = ["SimBin", "SimBin Alternative"]
 
     choice = random.choice(titles)
 
-    if 'random_title' in directives:
-        return {'title': choice}, {}
+    if "random_title" in directives:
+        return {"title": choice}, {}
 
-    return {'title': 'Crawlb.in'}, {}
+    return {"title": "SimBin"}, {}
 
 
 def index_follow_directives(directives):
@@ -146,38 +146,38 @@ def index_follow_directives(directives):
     """
 
     context = {}
-    context['meta_follow_index_string'] = ""
+    context["meta_follow_index_string"] = ""
 
-    context['meta_follow'] = 'meta_follow' in directives
-    context['meta_nofollow'] = 'meta_nofollow' in directives
-    context['meta_index'] = 'meta_index' in directives
-    context['meta_noindex'] = 'meta_noindex' in directives
+    context["meta_follow"] = "meta_follow" in directives
+    context["meta_nofollow"] = "meta_nofollow" in directives
+    context["meta_index"] = "meta_index" in directives
+    context["meta_noindex"] = "meta_noindex" in directives
 
-    if context['meta_follow']:
-        context['meta_follow_index_string'] += "follow, "
-    if context['meta_nofollow']:
-        context['meta_follow_index_string'] += "nofollow, "
-    if context['meta_index']:
-        context['meta_follow_index_string'] += "index, "
-    if context['meta_noindex']:
-        context['meta_follow_index_string'] += "noindex, "
+    if context["meta_follow"]:
+        context["meta_follow_index_string"] += "follow, "
+    if context["meta_nofollow"]:
+        context["meta_follow_index_string"] += "nofollow, "
+    if context["meta_index"]:
+        context["meta_follow_index_string"] += "index, "
+    if context["meta_noindex"]:
+        context["meta_follow_index_string"] += "noindex, "
 
-    if context['meta_follow_index_string']:
-        context['meta_follow_index_string'] = context['meta_follow_index_string'][:-2]
+    if context["meta_follow_index_string"]:
+        context["meta_follow_index_string"] = context["meta_follow_index_string"][:-2]
 
     header_values = []
-    if 'header_noindex' in directives:
-        header_values.append('noindex')
-    if 'header_index' in directives:
-        header_values.append('index')
-    if 'header_nofollow' in directives:
-        header_values.append('nofollow')
-    if 'header_follow' in directives:
-        header_values.append('follow')
+    if "header_noindex" in directives:
+        header_values.append("noindex")
+    if "header_index" in directives:
+        header_values.append("index")
+    if "header_nofollow" in directives:
+        header_values.append("nofollow")
+    if "header_follow" in directives:
+        header_values.append("follow")
 
     headers = {}
     if header_values:
-        headers = {'X-Robots-Tag': ','.join(header_values)}
+        headers = {"X-Robots-Tag": ",".join(header_values)}
 
     return context, headers
 
@@ -209,51 +209,51 @@ def canonical_directives(directives, base, self, next_block):
     context = {}
     headers = {}
 
-    if 'canonical_next_block' in directives:
+    if "canonical_next_block" in directives:
         canonical_url = next_block
-        context['canonical_next_block'] = canonical_url
-        headers['Link'] = '<{url}>; rel="canonical"'.format(url=canonical_url)
+        context["canonical_next_block"] = canonical_url
+        headers["Link"] = '<{url}>; rel="canonical"'.format(url=canonical_url)
 
-    if 'canonical_random' in directives:
+    if "canonical_random" in directives:
         canonical_url = get_random_url(base)
-        context['canonical_random'] = canonical_url
-        headers['Link'] = '<{url}>; rel="canonical"'.format(url=canonical_url)
+        context["canonical_random"] = canonical_url
+        headers["Link"] = '<{url}>; rel="canonical"'.format(url=canonical_url)
 
-    if 'canonical_self' in directives:
+    if "canonical_self" in directives:
         canonical_url = self
-        context['canonical_self'] = canonical_url
-        headers['Link'] = '<{url}>; rel="canonical"'.format(url=canonical_url)
+        context["canonical_self"] = canonical_url
+        headers["Link"] = '<{url}>; rel="canonical"'.format(url=canonical_url)
 
-    if 'canonical_home' in directives:
+    if "canonical_home" in directives:
         canonical_url = base
-        context['canonical_home'] = canonical_url
-        headers['Link'] = '<{url}>; rel="canonical"'.format(url=canonical_url)
+        context["canonical_home"] = canonical_url
+        headers["Link"] = '<{url}>; rel="canonical"'.format(url=canonical_url)
 
     # header canonicals
-    if 'header_canonical_next_block' in directives:
-        headers['Link'] = '<{url}>; rel="canonical"'.format(url=next_block)
+    if "header_canonical_next_block" in directives:
+        headers["Link"] = '<{url}>; rel="canonical"'.format(url=next_block)
 
-    if 'header_canonical_random' in directives:
-        headers['Link'] = '<{url}>; rel="canonical"'.format(url=get_random_url(base))
+    if "header_canonical_random" in directives:
+        headers["Link"] = '<{url}>; rel="canonical"'.format(url=get_random_url(base))
 
-    if 'header_canonical_self' in directives:
-        headers['Link'] = '<{url}>; rel="canonical"'.format(url=self)
+    if "header_canonical_self" in directives:
+        headers["Link"] = '<{url}>; rel="canonical"'.format(url=self)
 
-    if 'header_canonical_home' in directives:
-        headers['Link'] = '<{url}>; rel="canonical"'.format(url=base)
+    if "header_canonical_home" in directives:
+        headers["Link"] = '<{url}>; rel="canonical"'.format(url=base)
 
     # meta tags
-    if 'html_canonical_next_block' in directives:
-        context['canonical_next_block'] = next_block
+    if "html_canonical_next_block" in directives:
+        context["canonical_next_block"] = next_block
 
-    if 'html_canonical_random' in directives:
-        context['canonical_random'] = get_random_url(base)
+    if "html_canonical_random" in directives:
+        context["canonical_random"] = get_random_url(base)
 
-    if 'html_canonical_self' in directives:
-        context['canonical_self'] = self
+    if "html_canonical_self" in directives:
+        context["canonical_self"] = self
 
-    if 'html_canonical_home' in directives:
-        context['canonical_home'] = base
+    if "html_canonical_home" in directives:
+        context["canonical_home"] = base
 
     return context, headers
 
@@ -276,20 +276,20 @@ def vary_directives(directives):
 
     varies_by = []
 
-    if 'vary_accept_encoding' in directives:
-        varies_by.append('Accept-Encoding')
+    if "vary_accept_encoding" in directives:
+        varies_by.append("Accept-Encoding")
 
-    if 'vary_user_agent' in directives:
-        varies_by.append('User-Agent')
+    if "vary_user_agent" in directives:
+        varies_by.append("User-Agent")
 
-    if 'vary_cookie' in directives:
-        varies_by.append('Cookie')
+    if "vary_cookie" in directives:
+        varies_by.append("Cookie")
 
-    if 'vary_referer' in directives or 'vary_referrer' in directives:
-        varies_by.append('Referer')
+    if "vary_referer" in directives or "vary_referrer" in directives:
+        varies_by.append("Referer")
 
     if varies_by:
-        headers['Vary'] = ','.join(varies_by)
+        headers["Vary"] = ",".join(varies_by)
 
     return context, headers
 
@@ -308,25 +308,25 @@ def delay_directives(directives):
     context = {}
     headers = {}
 
-    if 'delay_1' in directives:
+    if "delay_1" in directives:
         time.sleep(1)
-        context['delay'] = 1
+        context["delay"] = 1
 
-    if 'delay_2' in directives:
+    if "delay_2" in directives:
         time.sleep(2)
-        context['delay'] = 2
+        context["delay"] = 2
 
-    if 'delay_3' in directives:
+    if "delay_3" in directives:
         time.sleep(3)
-        context['delay'] = 3
+        context["delay"] = 3
 
-    if 'delay_4' in directives:
+    if "delay_4" in directives:
         time.sleep(4)
-        context['delay'] = 4
+        context["delay"] = 4
 
-    if 'delay_5' in directives:
+    if "delay_5" in directives:
         time.sleep(5)
-        context['delay'] = 5
+        context["delay"] = 5
 
     return context, headers
 
@@ -338,15 +338,15 @@ def get_random_url(base):
     """
 
     fragments = [
-        'meta_no_index+meta_nofollow',
-        'response_301',
-        'meta_noindex',
-        'canonical_self+vary_user_agent',
-        'canonical_self',
-        'vary_user_agent',
-        'meta_noindex+canonical_random'
+        "meta_no_index+meta_nofollow",
+        "response_301",
+        "meta_noindex",
+        "canonical_self+vary_user_agent",
+        "canonical_self",
+        "vary_user_agent",
+        "meta_noindex+canonical_random",
     ]
 
     choice = random.choice(fragments)
 
-    return base + '/{choice}/'.format(choice=choice)
+    return base + "/{choice}/".format(choice=choice)
