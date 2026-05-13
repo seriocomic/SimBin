@@ -19,7 +19,8 @@ RUN apt-get update \
 COPY requirements.txt /app/
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy project
+# Copy project (ARG invalidates cache when commit changes)
+ARG COMMIT_SHA=unknown
 COPY . /app/
 
 # Make entrypoint script executable
