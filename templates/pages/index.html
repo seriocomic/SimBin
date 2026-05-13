@@ -2,22 +2,44 @@
 <html lang="en" data-theme="light">
 	<head>
 		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>SimBin - Simulate all the things</title>
 		<link rel="icon" href="{% static 'favicon.ico' %}">
-		<script>(function(){var s=localStorage.getItem('simbin-theme');if(!s)s=window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',s);})();</script>
-		<link rel="stylesheet" href="{% static 'template.css' %}">
+		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+		<style>.simbin_directive,.simbin_url,.navbar,a{background-color:#eee}html{position:relative;min-height:100%}body{margin-bottom:60px}footer{position:absolute;bottom:0;width:100%;height:45px;padding-top:15px;background-color:#f5f5f5}footer p{text-align:center}.main{margin-top:50px}.simbin_url,.second_url,h4{margin-top:20px}.simbin_directive{color:#337ab7;font-size:1.1em}.simbin_url{font-size:1.2em;padding:10px;width:100%;display:block;margin-bottom:20px}.second_url{display:block;padding-left:20px}.simbin_url a{font-family:Courier}a:hover{text-decoration:none}.note{display:block;color:#666;font-size:.8em}ol{font-size:1.3em}ol a{padding:5px;width:50%;display:inline-block}ol li{margin:5px}h2.url{word-wrap:break-word;color:#aaa;font-size:1.8em}</style>
+		<style>
+			:root{--bg:#f8f9fa;--bg-card:#ffffff;--bg-navbar:#eeeeee;--text:#212529;--text-muted:#6c757d;--border:#dee2e6;--link:#337ab7}
+			html[data-theme="dark"]{--bg:#0d1117;--bg-card:#161b22;--bg-navbar:#161b22;--text:#c9d1d9;--text-muted:#8b949e;--border:#30363d;--link:#58a6ff}
+			html[data-theme="dark"] body{background:var(--bg);color:var(--text)}
+			html[data-theme="dark"] .jumbotron{background:var(--bg-card);color:var(--text)}
+			html[data-theme="dark"] .jumbotron a{color:var(--link)}
+			html[data-theme="dark"] footer{background-color:var(--bg-card);color:var(--text-muted)}
+			html[data-theme="dark"] .simbin_url,html[data-theme="dark"] .simbin_directive,html[data-theme="dark"] a{background-color:var(--bg-card);color:var(--link)}
+			html[data-theme="dark"] .note{color:var(--text-muted)}
+			html[data-theme="dark"] h1,html[data-theme="dark"] h2,html[data-theme="dark"] h3,html[data-theme="dark"] h4,html[data-theme="dark"] h5,html[data-theme="dark"] p{color:var(--text)}
+			html[data-theme="dark"] .container{color:var(--text)}
+			html[data-theme="dark"] hr{border-color:var(--border)}
+			.sb-topbar{background:var(--bg-navbar);border-bottom:1px solid var(--border);padding:.5rem 1rem;display:flex;justify-content:flex-end;align-items:center}
+			.sb-theme-btn{background:var(--bg-card);border:1px solid var(--border);color:var(--text-muted);padding:.25rem .65rem;border-radius:5px;cursor:pointer;font-size:.78rem;font-family:inherit}
+			.sb-theme-btn:hover{color:var(--text)}
+		</style>
+		<script>
+			(function(){var s=localStorage.getItem('simbin-theme');if(!s)s=window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',s);})();
+		</script>
 	</head>
 	<body>
 		<div class="sb-topbar">
 			<button class="sb-theme-btn" id="theme-toggle" onclick="toggleTheme()">Dark</button>
 		</div>
 		<div class="jumbotron">
-			<h1><em>Sim</em>Bin</h1>
-			<p><a href="/">SimBin</a> is designed for testing web crawlers against various search engine directives and HTTP responses, plus HTTP testing scenarios for APIs and clients.</p>
-			<p>Inspired by <a href="https://httpbin.org/">httpbin</a>, forked from the original <a href="https://github.com/DistilledLtd/crawlbin">Crawlbin</a> repository.</p>
+			<div class="container">
+				<h1><em>Sim</em>Bin</h1>
+				<p><a href="/">SimBin</a> is designed for testing web crawlers against various search engine directives and HTTP responses, plus HTTP testing scenarios for APIs and clients.</p>
+				<p>Inspired by <a href="https://httpbin.org/">httpbin</a>, forked from the original <a href="https://github.com/DistilledLtd/crawlbin">Crawlbin</a> repository.</p>
+			</div>
 		</div>
-		<div class="main">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
 					<h2>Introduction</h2>
 					<p>SimBin provides two main categories of testing functionality:</p>
 					<ul>
@@ -338,6 +360,8 @@
 					<p>This depends on your deployment configuration. The application itself supports HTTPS when properly configured.</p>
 					<h4>Can I combine SimBin flags with HTTP scenarios?</h4>
 					<p>No, these are separate systems. SimBin flags use a specific URL pattern, while HTTP scenarios use dedicated endpoints under /http/.</p>
+				</div>
+			</div>
 			<!-- HTTP Scenarios Section -->
 			<h3><a name="http_scenarios"></a>HTTP Scenarios</h3>
 			<p>In addition to crawler-focused features, we provide HTTP testing scenarios inspired by <a href="https://httpbin.org/">httpbin</a>. These endpoints help test HTTP clients, APIs, and various request/response patterns.</p>
@@ -458,8 +482,9 @@
 			<hr>
 		</div>
 		<footer>
-			<p class="text-center">A <a href="https://www.qnq.com.au/">QnQ</a> production for <a href="https://www.augsentric.com/">Augsentric</a> - built for crawler and agent testing. <a href="/">Home</a></p>
+			<p class="text-center">This is a <a href="https://www.qnq.com.au/">QnQ</a> production - made for <a href="https://www.siteladon.com">SiteLadon</a> - Dev Tools are your friend :)</p>
 		</footer>
+		<script src="//code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha256-3edrmyuQ0w65f8gfBsqowzjJe2iM6n0nKciPUp8y+7E=" crossorigin="anonymous"></script>
 	<script>
 		function toggleTheme(){var h=document.documentElement,d=h.getAttribute('data-theme')==='dark',n=d?'light':'dark';h.setAttribute('data-theme',n);localStorage.setItem('simbin-theme',n);document.getElementById('theme-toggle').textContent=d?'Dark':'Light';}
 		(function(){var s=localStorage.getItem('simbin-theme');if(!s)s=window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.getElementById('theme-toggle').textContent=s==='dark'?'Light':'Dark';})();

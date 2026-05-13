@@ -9,3 +9,6 @@ services:
       - DEBUG=${DEBUG:-true}
       - SECRET_KEY=${SECRET_KEY:-your-secret-key-here-change-in-production}
       - ALLOWED_HOSTS=${ALLOWED_HOSTS:-localhost,127.0.0.1}
+    volumes:
+      - .:/app
+    command: python manage.py runserver 0.0.0.0:8881

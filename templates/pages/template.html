@@ -28,13 +28,10 @@
 
 {% if h1 != "off" %}<h1 class="sr-only">SimBin{% if h1 == "multiple" %}</h1><h1 class="sr-only">Another title{% endif %}</h1>{% endif %}
 
-<div class="sb-topbar">
-  <button type="button" class="sb-theme-btn" id="theme-toggle" onclick="toggleTheme()">Dark</button>
-</div>
-
-<div class="jumbotron">
-  <h1><em>Sim</em>Bin</h1>
-</div>
+<nav class="navbar">
+  <a class="navbar-brand" href="/"><span>Sim</span>Bin</a>
+  <button type="button" class="theme-toggle" id="theme-toggle" onclick="toggleTheme()">Dark</button>
+</nav>
 
 <div class="main">
 
