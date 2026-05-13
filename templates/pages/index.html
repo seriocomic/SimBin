@@ -21,6 +21,7 @@
 			.sb-topbar{background:var(--bg-navbar);border-bottom:1px solid var(--border);padding:.5rem 1rem;display:flex;justify-content:flex-end;align-items:center}
 			.sb-theme-btn{background:var(--bg-card);border:1px solid var(--border);color:var(--text-muted);padding:.25rem .65rem;border-radius:5px;cursor:pointer;font-size:.78rem;font-family:inherit}
 			.sb-theme-btn:hover{color:var(--text)}
+			.jumbotron h1 em{color:#e36209;font-style:normal;font-weight:700}
 		</style>
 		<script>
 			(function(){var s=localStorage.getItem('simbin-theme');if(!s)s=window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',s);})();
@@ -33,6 +34,8 @@
 		<div class="jumbotron">
 			<div class="container">
 				<h1><em>Sim</em>Bin</h1>
+				<p><a href="/">SimBin</a> is designed for testing web crawlers against various search engine directives and HTTP responses, plus HTTP testing scenarios for APIs and clients.</p>
+				<p>Inspired by <a href="https://httpbin.org/">httpbin</a>, forked from the original <a href="https://github.com/DistilledLtd/crawlbin">Crawlbin</a> repository.</p>
 			</div>
 		</div>
 		<div class="container">
