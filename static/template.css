@@ -7,17 +7,19 @@ a{color:var(--link);text-decoration:none}
 a:hover{text-decoration:underline}
 .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 
-/* Navbar */
-.navbar{background:var(--bg-navbar);border-bottom:1px solid var(--border);padding:.75rem 1.5rem;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100}
-.navbar-brand{font-weight:700;font-size:1.1rem;color:var(--text);letter-spacing:-.02em}
-.navbar-brand span{color:#e36209}
-.theme-toggle{background:var(--bg-card);border:1px solid var(--border);color:var(--text-muted);padding:.3rem .75rem;border-radius:6px;cursor:pointer;font-size:.8rem;font-family:inherit}
-.theme-toggle:hover{color:var(--text);border-color:var(--text-muted)}
+/* Topbar */
+.sb-topbar{background:var(--bg-navbar);border-bottom:1px solid var(--border);padding:.5rem 1rem;display:flex;justify-content:flex-end;align-items:center}
+.sb-theme-btn{background:var(--bg-card);border:1px solid var(--border);color:var(--text-muted);padding:.25rem .65rem;border-radius:5px;cursor:pointer;font-size:.78rem;font-family:inherit}
+.sb-theme-btn:hover{color:var(--text)}
 
 /* Jumbotron */
-.jumbotron{background:var(--bg-card);border-bottom:1px solid var(--border);padding:1.5rem 1.5rem;text-align:center}
-.jumbotron h1{font-size:2rem;font-weight:700;letter-spacing:-.03em;margin:0}
-.jumbotron h1 em{color:#e36209;font-style:normal}
+.jumbotron{background:var(--bg-card);border-bottom:1px solid var(--border);padding:2rem 1.5rem}
+html[data-theme="dark"] .jumbotron{color:var(--text)}
+html[data-theme="dark"] .jumbotron a{color:var(--link)}
+.jumbotron h1{font-size:2.25rem;font-weight:700;letter-spacing:-.02em;margin:0 0 .75rem}
+.jumbotron h1 em{color:#e36209;font-style:normal;font-weight:700}
+.jumbotron p{color:var(--text-muted);margin:.5rem 0 0}
+html[data-theme="dark"] .jumbotron p{color:var(--text)}
 
 /* Main */
 .main{flex:1;max-width:860px;margin:0 auto;width:100%;padding:2rem 1.5rem}
@@ -73,3 +75,21 @@ html[data-theme="dark"] .signal-row.impact-warning{background:color-mix(in srgb,
 
 /* Footer */
 footer{border-top:1px solid var(--border);padding:1rem 1.5rem;text-align:center;font-size:.8rem;color:var(--text-muted)}
+
+/* SimBin content (index/scenarios pages) */
+h2{margin-top:1.75rem;margin-bottom:.5rem}
+h3{margin-top:1.5rem;margin-bottom:.5rem}
+h4{margin-top:1.25rem;margin-bottom:.4rem}
+h5{margin-top:1rem;margin-bottom:.25rem}
+hr{border:none;border-top:1px solid var(--border);margin:1.5rem 0}
+.simbin_directive{color:var(--link);font-size:1.1em}
+.simbin_url{font-size:.95rem;padding:.6rem .85rem;background:var(--bg-card);border:1px solid var(--border);border-radius:4px;width:100%;display:block;margin:1rem 0;font-family:'SFMono-Regular',Consolas,monospace;word-break:break-all}
+.simbin_url,.second_url{margin-top:1rem}
+.second_url{display:block;padding-left:1.5rem}
+.simbin_url a{font-family:'SFMono-Regular',Consolas,monospace}
+.note{display:block;color:var(--text-muted);font-size:.82rem;margin:.25rem 0 0}
+ol{font-size:1rem;padding-left:1.5rem}
+ol a{padding:.2rem .4rem;display:inline-block}
+ol li{margin:.4rem 0}
+h2.url{word-wrap:break-word;color:var(--text-muted);font-size:1.4rem}
+.scenario-group{margin-bottom:2rem}
