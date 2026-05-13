@@ -6,6 +6,7 @@
   <title>{{title}} - SimBin by Augsentric</title>
   <link rel="icon" href="{% static 'favicon.ico' %}">
   <script>(function(){var s=localStorage.getItem('simbin-theme');if(!s)s=window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',s);})();</script>
+  <link rel="stylesheet" href="{% static 'simbin.css' %}">
   <link rel="stylesheet" href="{% static 'template.css' %}">
 {% if meta_follow_index_string %}
   <meta name="robots" content="{{ meta_follow_index_string }}">
@@ -28,10 +29,14 @@
 
 {% if h1 != "off" %}<h1 class="sr-only">SimBin{% if h1 == "multiple" %}</h1><h1 class="sr-only">Another title{% endif %}</h1>{% endif %}
 
-<nav class="navbar">
-  <a class="navbar-brand" href="/"><span>Sim</span>Bin</a>
-  <button type="button" class="theme-toggle" id="theme-toggle" onclick="toggleTheme()">Dark</button>
-</nav>
+<div class="sb-topbar">
+  <button type="button" class="sb-theme-btn" id="theme-toggle" onclick="toggleTheme()">Dark</button>
+</div>
+<div class="jumbotron">
+  <div class="container">
+    <h1><a href="/"><em>Sim</em>Bin</a></h1>
+  </div>
+</div>
 
 <div class="main">
 
@@ -93,10 +98,7 @@
   A <a href="https://www.qnq.com.au/">QnQ</a> production for <a href="https://www.augsentric.com/">Augsentric</a> - built for crawler and agent testing. <a href="/">Home</a>
 </footer>
 
-<script>
-  function toggleTheme(){var h=document.documentElement,d=h.getAttribute('data-theme')==='dark',n=d?'light':'dark';h.setAttribute('data-theme',n);localStorage.setItem('simbin-theme',n);document.getElementById('theme-toggle').textContent=d?'Dark':'Light';}
-  (function(){var s=localStorage.getItem('simbin-theme');if(!s)s=window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.getElementById('theme-toggle').textContent=s==='dark'?'Light':'Dark';})();
-</script>
+<script>function toggleTheme(){var h=document.documentElement,d=h.getAttribute('data-theme')==='dark',n=d?'light':'dark';h.setAttribute('data-theme',n);localStorage.setItem('simbin-theme',n);document.getElementById('theme-toggle').textContent=d?'Dark':'Light';}(function(){var s=localStorage.getItem('simbin-theme');if(!s)s=window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.getElementById('theme-toggle').textContent=s==='dark'?'Light':'Dark';})();</script>
 
 </body>
 </html>

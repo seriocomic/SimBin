@@ -1,91 +1,109 @@
-/* Sticky footer styles
--------------------------------------------------- */
-html {
-    position: relative;
-    min-height: 100%;
+/* SimBin - Shared base styles */
+
+:root {
+  --bg: #f8f9fa;
+  --bg-card: #fff;
+  --bg-navbar: #eee;
+  --text: #212529;
+  --text-muted: #6c757d;
+  --border: #dee2e6;
+  --link: #337ab7;
+  --jumbotron-bg: #eee;
 }
+
+html[data-theme="dark"] {
+  --bg: #0d1117;
+  --bg-card: #161b22;
+  --bg-navbar: #161b22;
+  --text: #c9d1d9;
+  --text-muted: #8b949e;
+  --border: #30363d;
+  --link: #58a6ff;
+  --jumbotron-bg: #161b22;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { min-height: 100%; }
 body {
-    /* Margin bottom by footer height */
-    margin-bottom: 60px;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 15px;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
+a { color: var(--link); text-decoration: none; }
+a:hover { text-decoration: underline; }
+hr { border: none; border-top: 1px solid var(--border); margin: 1.5rem 0; }
+.sr-only {
+  position: absolute; width: 1px; height: 1px; padding: 0;
+  margin: -1px; overflow: hidden; clip: rect(0,0,0,0);
+  white-space: nowrap; border: 0;
+}
+
+/* Topbar */
+.sb-topbar {
+  background: var(--bg-navbar);
+  border-bottom: 1px solid var(--border);
+  padding: .5rem 1rem;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+.sb-theme-btn {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  padding: .25rem .65rem;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: .78rem;
+  font-family: inherit;
+}
+.sb-theme-btn:hover { color: var(--text); }
+
+/* Jumbotron */
+.jumbotron { background: var(--jumbotron-bg); padding: 2rem 1rem; }
+.jumbotron .container { max-width: 900px; margin: 0 auto; padding: 0 15px; }
+.jumbotron h1 { font-size: 2.5em; margin: 0; }
+.jumbotron h1 a { color: inherit; text-decoration: none; }
+.jumbotron h1 a:hover { text-decoration: none; opacity: .8; }
+.jumbotron p { margin-top: .5rem; }
+.jumbotron p a { color: var(--link); }
+
+/* Footer */
 footer {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    /* Set the fixed height of the footer here */
-    height: 45px;
-    padding-top: 15px;
-    background-color: #f5f5f5;
- }
-
-footer p {
-    text-align: center !important;
+  border-top: 1px solid var(--border);
+  padding: 1rem 1.5rem;
+  text-align: center;
+  font-size: .8rem;
+  color: var(--text-muted);
 }
 
- .navbar {
-    background-color: #eee;
-}
+/* Layout */
+.container { max-width: 900px; margin: 0 auto; padding: 0 15px; }
+.main-content { flex: 1; padding-top: 1.5rem; padding-bottom: 2rem; }
 
-.main {
-    margin-top: 50px;
-}
-
-.simbin_directive {
-    background-color: #eee;
-    color: #337ab7;
-    font-size: 1.1em;
-}
+/* Index page */
+.simbin_directive { color: var(--link); font-size: 1.1em; }
 .simbin_url {
-    font-size: 1.2em;
-    padding: 10px;
-    background-color: #eee;
-    width: 100%;
-    display: block;
-    margin-top: 20px;
-    margin-bottom: 20px;
+  font-size: 1.2em;
+  padding: 10px;
+  background-color: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  width: 100%;
+  display: block;
+  margin: 15px 0;
 }
-.second_url {
-    display: block;
-    padding-left: 20px;
-    margin-top: 20px;
-}
-.simbin_url a {
-    font-family: Courier;
-}
-a {
-    background-color: #eee;
-}
-
-a:hover {
-    text-decoration: none;
-}
-
-.note {
-    display: block;
-    color: #666;
-    font-size: 0.8em;
-}
-
-ol {
-    font-size: 1.3em;
-}
-
-ol a {
-    padding: 5px;
-    width: 50%;
-    display: inline-block;
-}
-
-ol li {
-    margin: 5px;
-}
-
-h2.url {
-    word-wrap: break-word;
-    color: #aaa;
-    font-size: 1.8em;
-}
-
-h4 {
-    margin-top: 20px;
-}
+.simbin_url a { font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace; }
+.second_url { display: block; padding-left: 20px; margin-top: 15px; }
+.note { display: block; color: var(--text-muted); font-size: .8em; }
+ol { font-size: 1.2em; }
+ol a { padding: 5px; display: inline-block; }
+ol li { margin: 5px; }
+h2.url { word-wrap: break-word; color: var(--text-muted); font-size: 1.8em; }
+h4 { margin-top: 20px; }
