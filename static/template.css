@@ -1,9 +1,9 @@
 /* Template-specific styles */
 
-.main { flex: 1; max-width: 860px; margin: 0 auto; width: 100%; padding: 2rem 1.5rem; }
+.main { flex: 1; max-width: 900px; margin: 0 auto; width: 100%; padding: 2rem 15px; }
 
 /* URL header */
-.url-header { margin-bottom: 2rem; }
+.url-header { margin-bottom: 2rem; display: flex; align-items: baseline; justify-content: space-between; flex-wrap: wrap; gap: .5rem; }
 .url-path {
   font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
   font-size: 1.1rem;
@@ -11,7 +11,7 @@
   word-break: break-all;
   margin-bottom: .6rem;
 }
-.url-path a { color: var(--text-muted); }
+.url-path a { color: var(--link); }
 
 /* Status badge */
 .status-badge {
