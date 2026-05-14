@@ -174,7 +174,10 @@ def handle(request, url):
         else '{base}/'.format(base=base_url)
     )
 
-    context = {'url': url, 'previous_parts_url': previous_parts_url, 'directives': directives}
+    page_title = " + ".join(
+        flag.replace("_", " ").title() for flag in last_part.split("+") if flag
+    )
+    context = {'url': url, 'previous_parts_url': previous_parts_url, 'directives': directives, 'page_title': page_title}
     headers = {}
 
     h1_context, h1_headers = h1_directive(directives)
