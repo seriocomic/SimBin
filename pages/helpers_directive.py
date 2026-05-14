@@ -108,23 +108,13 @@ def h1_directive(directives):
     return {"h1": ""}, {}
 
 
-def title_tag_directive(directives):
-    """Handle the title tag directive:
-
-    - random_title
-
-    Title is always 'SimBin' in the absence of a directive
-
-    """
-
-    titles = ["SimBin", "SimBin Alternative"]
-
-    choice = random.choice(titles)
-
+def title_tag_directive(directives, page_title=""):
+    prefix = "SimBin"
     if "random_title" in directives:
-        return {"title": choice}, {}
+        prefix = random.choice(["SimBin", "SimBin Alternative"])
 
-    return {"title": "SimBin"}, {}
+    title = f"{prefix}: {page_title}" if page_title else prefix
+    return {"title": title}, {}
 
 
 def index_follow_directives(directives):

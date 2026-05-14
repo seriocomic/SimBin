@@ -184,7 +184,7 @@ def handle(request, url):
     context.update(h1_context)
     headers.update(h1_headers)
 
-    title_tag_context, title_tag_headers = title_tag_directive(directives)
+    title_tag_context, title_tag_headers = title_tag_directive(directives, page_title)
     context.update(title_tag_context)
     headers.update(title_tag_headers)
 
