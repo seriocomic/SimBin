@@ -87,6 +87,69 @@ footer {
 .container { max-width: 900px; margin: 0 auto; padding: 0 15px; }
 .main-content { flex: 1; padding-top: 1.5rem; padding-bottom: 2rem; }
 
+/* Two-column layout with sticky ToC */
+.sb-layout {
+  display: flex;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1.5rem 15px 2rem;
+  gap: 2.5rem;
+  flex: 1;
+}
+.sb-toc {
+  position: sticky;
+  top: 1rem;
+  align-self: flex-start;
+  width: 220px;
+  flex-shrink: 0;
+  max-height: calc(100vh - 2rem);
+  overflow-y: auto;
+  font-size: .82rem;
+  border-right: 1px solid var(--border);
+  padding-right: 1.25rem;
+}
+.sb-toc-title {
+  font-size: .9rem;
+  margin: 0 0 .75rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: .05em;
+}
+.sb-toc-list, .sb-toc-list ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.sb-toc-list > li { margin-bottom: .35rem; }
+.sb-toc-list ul { padding-left: .85rem; margin-top: .2rem; }
+.sb-toc-list ul li { margin-bottom: .15rem; }
+.sb-toc-link {
+  display: block;
+  padding: .15rem .4rem;
+  color: var(--text-muted);
+  border-radius: 3px;
+  transition: color .15s, background .15s;
+  font-size: inherit;
+}
+.sb-toc-link:hover {
+  color: var(--text);
+  text-decoration: none;
+}
+.sb-toc-link.active {
+  color: var(--link);
+  background: color-mix(in srgb, var(--link) 10%, transparent);
+  font-weight: 600;
+}
+.sb-content {
+  flex: 1;
+  min-width: 0;
+  max-width: 900px;
+}
+@media (max-width: 768px) {
+  .sb-toc { display: none; }
+  .sb-layout { padding: 1rem 15px; }
+}
+
 /* Index page */
 .simbin_directive { color: var(--link); font-size: 1.1em; }
 .simbin_url {

@@ -19,10 +19,42 @@
 				<p>Inspired by <a href="https://httpbin.org/">httpbin</a>, forked from the original <a href="https://github.com/DistilledLtd/crawlbin">Crawlbin</a> repository.</p>
 			</div>
 		</div>
-		<div class="container main-content">
-			<div class="row">
-				<div class="col-md-12">
-					<h2>Introduction</h2>
+		<div class="sb-layout">
+			<nav class="sb-toc" id="toc">
+				<h3 class="sb-toc-title">Contents</h3>
+				<ol class="sb-toc-list">
+					<li><a href="#introduction" class="sb-toc-link">Introduction</a></li>
+					<li>
+						<a href="#flag_list" class="sb-toc-link">SimBin Features</a>
+						<ul>
+							<li><a href="#response_codes" class="sb-toc-link">Response Codes &amp; Redirects</a></li>
+							<li><a href="#noindex_directive" class="sb-toc-link">no/index directive</a></li>
+							<li><a href="#nofollow_directive" class="sb-toc-link">no/follow directive</a></li>
+							<li><a href="#h1_tag" class="sb-toc-link">H1 tags</a></li>
+							<li><a href="#title_tag" class="sb-toc-link">Title tag</a></li>
+							<li><a href="#canonical" class="sb-toc-link">Canonical</a></li>
+							<li><a href="#vary_header" class="sb-toc-link">Vary header</a></li>
+						</ul>
+					</li>
+					<li><a href="#random" class="sb-toc-link">Randomised responses</a></li>
+					<li><a href="#user_agent" class="sb-toc-link">User-agent responses</a></li>
+					<li>
+						<a href="#http_scenarios" class="sb-toc-link">HTTP Scenarios</a>
+						<ul>
+							<li><a href="#http_status" class="sb-toc-link">Status Codes</a></li>
+							<li><a href="#http_redirects" class="sb-toc-link">Redirects</a></li>
+							<li><a href="#http_headers" class="sb-toc-link">Headers</a></li>
+							<li><a href="#http_cookies" class="sb-toc-link">Cookies</a></li>
+							<li><a href="#http_data" class="sb-toc-link">Data Formats</a></li>
+							<li><a href="#http_encoding" class="sb-toc-link">Encoding &amp; Utilities</a></li>
+							<li><a href="#http_requests" class="sb-toc-link">Request Testing</a></li>
+						</ul>
+					</li>
+					<li><a href="#faq" class="sb-toc-link">FAQ</a></li>
+				</ol>
+			</nav>
+			<div class="sb-content">
+				<h2 id="introduction">Introduction</h2>
 					<p>SimBin provides two main categories of testing functionality:</p>
 					<ul>
 						<li><strong>Crawler Testing:</strong> Accepts flags in URLs which toggle various search engine directives and HTTP responses within complete HTML pages. Perfect for testing web crawlers against various scenarios they might encounter.</li>
@@ -53,36 +85,8 @@
 						<span class="note">HTTP Status: 404 (Not Found)</span>
 					</span>
 					<hr />
-					<h2>Table of Contents</h2>
-					<ol>
-						<li><a href="#flag_list">SimBin Features</a>
-							<ul>
-								<li><a href="#response_codes">Response Codes &amp; Redirects</a></li>
-								<li><a href="#noindex_directive">no/index directive</a></li>
-								<li><a href="#nofollow_directive">no/follow directive</a></li>
-								<li><a href="#h1_tag">H1 tags</a></li>
-								<li><a href="#title_tag">Title tag</a></li>
-								<li><a href="#canonical">Canonical</a></li>
-								<li><a href="#vary_header">Vary header</a></li>
-							</ul>
-						</li>
-						<li><a href="#random">Randomised responses</a></li>
-						<li><a href="#user_agent">User-agent / device determined responses</a></li>
-						<li><a href="#http_scenarios">HTTP Scenarios</a>
-							<ul>
-								<li><a href="#http_status">HTTP Status Codes</a></li>
-								<li><a href="#http_redirects">HTTP Redirects</a></li>
-								<li><a href="#http_headers">HTTP Headers</a></li>
-								<li><a href="#http_cookies">HTTP Cookies</a></li>
-								<li><a href="#http_data">Data Formats</a></li>
-								<li><a href="#http_encoding">Encoding &amp; Utilities</a></li>
-								<li><a href="#http_requests">HTTP Request Testing</a></li>
-							</ul>
-						</li>
-						<li><a href="#faq">FAQ</a></li>
-					</ol>
 					<!-- Flag list Section -->
-					<h3><a name="flag_list"></a>SimBin Features</h3>
+					<h3 id="flag_list">SimBin Features</h3>
 					<p>SimBin can take a variety of flags with various options. Here is the complete list.</p>
 					<ol>
 						<li><a href="#response_codes">Response Codes &amp; Redirects</a></li>
@@ -94,7 +98,7 @@
 						<li><a href="#vary_header">vary header</a></li>
 					</ol>
 					<!-- Response codes -->
-					<h4><a name="response_codes"></a>Response Codes &amp; Redirects</h4>
+					<h4 id="response_codes">Response Codes &amp; Redirects</h4>
 					<p>There are multiple HTTP response codes that are supported. With most response codes other flags will also still work so, for example, it is possible to craft a 404 page that has a canonical HTTP header, and two H1 tags. However, note that for response codes that redirect to a new page, no body content is returned.</p>
 					<p>The list of non-redirect response codes supported is:</p>
 					<span class="simbin_url">
@@ -156,7 +160,7 @@
 						<span class="note">HTTP Status: 308 (Permanent Redirect)</span>
 					</span>
 					<!-- no/index -->
-					<h4><a name="noindex_directive"></a>no/index directive</h4>
+					<h4 id="noindex_directive">no/index directive</h4>
 					<p>The 'noindex' directive is supported in both meta tag and HTTP header forms:</p>
 					<span class="simbin_url">
 						<a href="/meta_noindex/">/meta_noindex/</a>
@@ -184,7 +188,7 @@
 						<span class="note">&lt;meta name="robots" content="noindex, index" /&gt;</span>
 					</span>
 					<!-- no/follow -->
-					<h4><a name="nofollow_directive"></a>no/follow directive</h4>
+					<h4 id="nofollow_directive">no/follow directive</h4>
 					<p>The 'nofollow' directive is supported in both meta tag and HTTP header forms, and works similarly to the 'noindex' directive above:</p>
 					<span class="simbin_url">
 						<a href="/meta_nofollow/">/meta_nofollow/</a>
@@ -195,7 +199,7 @@
 						<span class="note">X-Robots-Tag: follow</span>
 					</span>
 					<!-- h1 tag -->
-					<h4><a name="h1_tag"></a>H1 tags</h4>
+					<h4 id="h1_tag">H1 tags</h4>
 					<p>By default SimBin serves a page with a single H1 header tag in the HTML source. However, there are options to have a page with zero or two H1 tags:</p>
 					<span class="simbin_url">
 						<a href="/h1_off/">/h1_off/</a>
@@ -207,7 +211,7 @@
 						<span class="note">&lt;h1&gt;Another title&lt;/h1&gt;</span>
 					</span>
 					<!-- random_title tag -->
-					<h4><a name="title_tag"></a>Title tag</h4>
+					<h4 id="title_tag">Title tag</h4>
 					<p>By default SimBin serves a page with the title 'SimBin' in the HTML head. However, there is an option for the title to be either 'SimBin' or 'SimBin Alternative', selected randomly:</p>
 					<span class="simbin_url">
 						<a href="/random_title/">/random_title/</a>
@@ -215,7 +219,7 @@
 					OR
 						<span class="note">&lt;title&gt;SimBin Alternative&lt;/title&gt;</span>
 					</span>
-					<h4><a name="canonical"></a>Canonical</h4>
+					<h4 id="canonical">Canonical</h4>
 					<p>The 'canonical' directive is supported in both meta tag and HTTP header forms. You can specify various values:</p>
 					<span class="simbin_url">
 						<a href="/canonical_self/">/canonical_self/</a>
@@ -247,7 +251,7 @@
 						<span class="note">Link: &lt;/h1_multiple+meta_noindex/html_canonical_next_block+header_canonical_self/&gt;; rel="canonical"</span>
 						<span class="note">&lt;link rel="canonical" href="/h1_multiple+meta_noindex/" /&gt;</span>
 					</span>
-					<h4><a name="vary_header"></a>Vary HTTP header</h4>
+					<h4 id="vary_header">Vary HTTP header</h4>
 					<p>There are various allowed values for the Vary HTTP header:</p>
 					<span class="simbin_url">
 						<a href="/vary_accept_encoding/">/vary_accept_encoding/</a>
@@ -271,7 +275,7 @@
 						<span class="note">Vary: User-Agent, Cookie</span>
 					</span>
 					<!-- Random Section -->
-					<h3><a name="random"></a>Randomised responses</h3>
+					<h3 id="random">Randomised responses</h3>
 					<p>It is possible to supply multiple, alternative, blocks of flags which are selected at random, such that responses are less predictable. Each block must be surounded by square brackets: <span class="simbin_directive">[]</span> .</p>
 					<span class="simbin_url">
 						<a href="/[meta_noindex+vary_cookie][response_404]/">/[meta_noindex+vary_cookie][response_404]/</a>
@@ -294,7 +298,7 @@
 					</span>
 					<p>This nesting allows for more complex sets of randomisation, but can also be combined with the user-agent targeting below.</p>
 					<!-- User-Agent Section -->
-					<h3><a name="user_agent"></a>User-agent determined responses</h3>
+					<h3 id="user_agent">User-agent determined responses</h3>
 					<p>It is possible to target different blocks of flags towards different devices or crawlers based upo their user agent. To do this you must enclose a block of flags in square brackets <span class="simbin_directive">[]</span>, as per above, and then prefix this block with a user agent flag and a <span class="simbin_directive">:</span>.</p>
 					<span class="simbin_url">
 						<a href="/[mobile:response_500][meta_noindex]/">/[mobile:response_500][meta_noindex]/</a>
@@ -333,7 +337,7 @@
 						<span>Other devices:</span>
 						<span class="note">HTTP Status: 404 (Not Found)</span>
 					</span>
-					<h3><a name="faq"></a>FAQ</h3>
+					<h3 id="faq">FAQ</h3>
 					<h4>What's the difference between SimBin features and HTTP scenarios?</h4>
 					<p>SimBin features (flags) are designed specifically for testing web crawlers and search engine behavior. HTTP scenarios provide general HTTP testing capabilities for any HTTP client or API testing.</p>
 					<h4>Do you handle POST requests?</h4>
@@ -342,14 +346,12 @@
 					<p>This depends on your deployment configuration. The application itself supports HTTPS when properly configured.</p>
 					<h4>Can I combine SimBin flags with HTTP scenarios?</h4>
 					<p>No, these are separate systems. SimBin flags use a specific URL pattern, while HTTP scenarios use dedicated endpoints under /http/.</p>
-				</div>
-			</div>
-			<!-- HTTP Scenarios Section -->
-			<h3><a name="http_scenarios"></a>HTTP Scenarios</h3>
+				<!-- HTTP Scenarios Section -->
+				<h3 id="http_scenarios">HTTP Scenarios</h3>
 			<p>In addition to crawler-focused features, we provide HTTP testing scenarios inspired by <a href="https://httpbin.org/">httpbin</a>. These endpoints help test HTTP clients, APIs, and various request/response patterns.</p>
 			
 			<!-- HTTP Status Codes -->
-			<h4><a name="http_status"></a>HTTP Status Codes</h4>
+			<h4 id="http_status">HTTP Status Codes</h4>
 			<p>Test your application's handling of various HTTP status codes:</p>
 			<span class="simbin_url">
 				<a href="{% url 'status_code' code=200 %}">{% url 'status_code' code=200 %}</a>
@@ -366,7 +368,7 @@
 			<p>You can test any valid HTTP status code by replacing the number in the URL.</p>
 
 			<!-- HTTP Redirects -->
-			<h4><a name="http_redirects"></a>HTTP Redirects</h4>
+			<h4 id="http_redirects">HTTP Redirects</h4>
 			<p>Test redirect chains and various redirect scenarios:</p>
 			<span class="simbin_url">
 				<a href="{% url 'redirect' %}">{% url 'redirect' %}</a>
@@ -383,7 +385,7 @@
 			<p>Test redirect loops and how your application handles multiple redirects.</p>
 
 			<!-- HTTP Headers -->
-			<h4><a name="http_headers"></a>HTTP Headers</h4>
+			<h4 id="http_headers">HTTP Headers</h4>
 			<p>Inspect and test HTTP request headers:</p>
 			<span class="simbin_url">
 				<a href="{% url 'headers' %}">{% url 'headers' %}</a>
@@ -399,7 +401,7 @@
 			</span>
 
 			<!-- HTTP Cookies -->
-			<h4><a name="http_cookies"></a>HTTP Cookies</h4>
+			<h4 id="http_cookies">HTTP Cookies</h4>
 			<p>Test cookie handling and session management:</p>
 			<span class="simbin_url">
 				<a href="{% url 'cookies' %}">{% url 'cookies' %}</a>
@@ -415,7 +417,7 @@
 			</span>
 
 			<!-- Data Formats -->
-			<h4><a name="http_data"></a>Data Formats</h4>
+			<h4 id="http_data">Data Formats</h4>
 			<p>Test various data format responses:</p>
 			<span class="simbin_url">
 				<a href="{% url 'json_response' %}">{% url 'json_response' %}</a>
@@ -434,7 +436,7 @@
 			</span>
 
 			<!-- Encoding & Utilities -->
-			<h4><a name="http_encoding"></a>Encoding & Utilities</h4>
+			<h4 id="http_encoding">Encoding &amp; Utilities</h4>
 			<p>Test encoding and decoding utilities:</p>
 			<span class="simbin_url">
 				<a href="{% url 'base64_decode' encoded_string='SFRUUCBTY2VuYXJpb3M=' %}">{% url 'base64_decode' encoded_string='SFRUUCBTY2VuYXJpb3M=' %}</a>
@@ -447,7 +449,7 @@
 			</span>
 
 			<!-- HTTP Request Testing -->
-			<h4><a name="http_requests"></a>HTTP Request Testing</h4>
+			<h4 id="http_requests">HTTP Request Testing</h4>
 			<p>Test different HTTP methods and request types:</p>
 			<span class="simbin_url">
 				<a href="{% url 'get_request' %}">{% url 'get_request' %}</a>
@@ -463,9 +465,30 @@
 			</span>
 			<hr>
 		</div>
+	</div>
 		<footer>
 			A <a href="https://www.qnq.com.au/">QnQ</a> production for <a href="https://www.augsentric.com/">Augsentric</a> - built for crawler and agent testing. <a href="/">Home</a>
 		</footer>
 		<script>function toggleTheme(){var h=document.documentElement,d=h.getAttribute('data-theme')==='dark',n=d?'light':'dark';h.setAttribute('data-theme',n);localStorage.setItem('simbin-theme',n);document.getElementById('theme-toggle').textContent=d?'Dark':'Light';}(function(){var s=localStorage.getItem('simbin-theme');if(!s)s=window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.getElementById('theme-toggle').textContent=s==='dark'?'Light':'Dark';})();</script>
+		<script>
+		(function(){
+			var links=document.querySelectorAll('.sb-toc-link');
+			var ids=[];
+			links.forEach(function(a){ids.push(a.getAttribute('href').slice(1));});
+			var sections=ids.map(function(id){return document.getElementById(id);}).filter(Boolean);
+			function update(){
+				var scrollY=window.scrollY+80;
+				var current='';
+				for(var i=0;i<sections.length;i++){
+					if(sections[i].offsetTop<=scrollY)current=sections[i].id;
+				}
+				links.forEach(function(a){
+					a.classList.toggle('active',a.getAttribute('href')==='#'+current);
+				});
+			}
+			window.addEventListener('scroll',update,{passive:true});
+			update();
+		})();
+		</script>
 	</body>
 </html>
