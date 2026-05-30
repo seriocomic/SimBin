@@ -2,13 +2,10 @@
 *__pycache__/
 *.py[cod]
 *$py.class
-
-# C extensions
 *.so
 
 # Distribution / packaging
 .Python
-env/
 build/
 develop-eggs/
 dist/
@@ -23,12 +20,6 @@ var/
 *.egg-info/
 .installed.cfg
 *.egg
-
-# PyInstaller
-#  Usually these files are written by a python script from a template
-#  before PyInstaller builds the exe, so as to inject date/other infos into it.
-*.manifest
-*.spec
 
 # Installer logs
 debug.log
@@ -48,12 +39,6 @@ coverage.xml
 .hypothesis/
 .pytest_cache/
 
-# Jupyter Notebook
-.ipynb_checkpoints
-
-# pyenv
-.python-version
-
 # mypy
 .mypy_cache/
 .dmypy.json
@@ -65,25 +50,27 @@ coverage.xml
 staticfiles/
 media/
 
-# Ignore local settings
+# Local settings
 local_settings.py
 settings_production.py
 
-# Ignore dotenv
+# Environment variables
 *.env
 *.env.*
+!.env.example
 
-# Ignore Mac system files
+# Mac / OS
 .DS_Store
+Thumbs.db
+.Spotlight-V100
+.Trashes
 
 # Virtual environments
 .venv/
 venv/
 ENV/
-env/
-.env/
 
-# SQLite databases (not needed for this app)
+# SQLite databases
 *.sqlite3
 *.db
 
@@ -94,13 +81,11 @@ env/
 *.tmp
 *.temp
 *~
+*.bak
 
-# OS generated files
-Thumbs.db
-.Spotlight-V100
-.Trashes
-
-# Docker
-.dockerignore
+# Docker (local dev only, not for production)
 docker-compose.yml
 docker-compose.override.yml
+
+# Claude Code
+CLAUDE.md
